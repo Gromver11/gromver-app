@@ -17,6 +17,7 @@ class Form extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     this.props.fetchData(this.state.value)
+    this.props.history.push(`/${this.state.value}`)
   }
   render() {
     return (

@@ -1,5 +1,6 @@
 import { connect } from 'react-redux'
 import TableOfResult from '../components/TableOfResult'
+import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = state => {
   return {
@@ -7,6 +8,8 @@ const mapStateToProps = state => {
   }
 }
 
-const TableOfResultContainer = connect(mapStateToProps)(TableOfResult)
+const TableOfResultContainer = withRouter(
+  connect(mapStateToProps)(TableOfResult)
+)
 
 export default TableOfResultContainer

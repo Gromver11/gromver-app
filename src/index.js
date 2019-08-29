@@ -4,12 +4,17 @@ import FormContainer from './containers/FormContainer'
 import TableOfResultContainer from './containers/TableOfResultContainer'
 import configureStore from './store/configureStore'
 import { Provider } from 'react-redux'
+import { Route, BrowserRouter } from 'react-router-dom'
 
 const store = configureStore()
 ReactDOM.render(
   <Provider store={store}>
-    <FormContainer />
-    <TableOfResultContainer />
+    <BrowserRouter>
+      <div>
+        <Route path="/" component={FormContainer} />
+        <Route path="/:info" component={TableOfResultContainer} />
+      </div>
+    </BrowserRouter>
   </Provider>,
   document.getElementById('root')
 )
