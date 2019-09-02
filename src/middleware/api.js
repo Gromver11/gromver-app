@@ -4,6 +4,15 @@ export const API_REQUEST = 'Api request'
 const CallApi = url => {
   return axios.get(url)
 }
+const getPageCount = response => {
+  const link = response.headers.link
+  if (!link) {
+    return null
+  }
+  const arrLink = link.split(';')[1]
+  const result = arrLink.slice(arrLink.lastIndexOf('=') + 1, -1)
+  return Number(result) + 1
+}
 const api = store => next => action => {
   if (!action[API_REQUEST]) {
     return next(action)
@@ -22,6 +31,7 @@ const api = store => next => action => {
         actionWith({
           type: DATA_SUCCESS,
           payload: res.data,
+          totalPageCount: getPageCount(res),
         })
       ),
     error =>
