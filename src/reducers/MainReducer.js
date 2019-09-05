@@ -13,7 +13,7 @@ export const MainReducer = (state = initialState, action) => {
     case DATA_SUCCESS:
       return {
         ...state,
-        list: action.payload,
+        list: action.payload.entities.recievedForks,
         isFetching: false,
         totalPageCount: action.totalPageCount,
       }

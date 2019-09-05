@@ -1,6 +1,8 @@
 import axios from 'axios'
+import { normalize, schema } from 'normalizr'
 
 export const API_REQUEST = 'Api request'
+const user = new schema.Entity('recievedForks', { idAttribute: 'id' })
 const CallApi = url => {
   return axios.get(url)
 }
@@ -30,7 +32,7 @@ const api = store => next => action => {
       next(
         actionWith({
           type: DATA_SUCCESS,
-          payload: res.data,
+          payload: normalize(res.data, [user]),
           totalPageCount: getPageCount(res),
         })
       ),
