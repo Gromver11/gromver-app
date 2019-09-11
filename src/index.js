@@ -5,6 +5,7 @@ import TableOfResultContainer from './containers/TableOfResultContainer'
 import configureStore from './store/configureStore'
 import { Provider } from 'react-redux'
 import { Route, BrowserRouter } from 'react-router-dom'
+import './index.css'
 
 const store = configureStore()
 ReactDOM.render(

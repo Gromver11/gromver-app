@@ -3,8 +3,11 @@ import TableOfResult from '../components/TableOfResult'
 import { withRouter } from 'react-router-dom'
 
 const mapStateToProps = state => {
+  const ids = state.MainReducer.ids
+  const list = state.MainReducer.list
   return {
-    list: state.MainReducer.list,
+    ids,
+    list,
   }
 }
 

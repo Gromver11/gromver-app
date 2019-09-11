@@ -4,6 +4,7 @@ const initialState = {
   error: null,
   list: null,
   totalPageCount: 0,
+  ids: [],
   elementPerPage: 30,
 }
 export const MainReducer = (state = initialState, action) => {
@@ -16,6 +17,7 @@ export const MainReducer = (state = initialState, action) => {
         list: action.payload.entities.recievedForks,
         isFetching: false,
         totalPageCount: action.totalPageCount,
+        ids: action.payload.result,
       }
     case DATA_ERROR:
       return {

@@ -1,4 +1,5 @@
 import React from 'react'
+import './Form.css'
 
 class Form extends React.Component {
   constructor(props) {
@@ -21,15 +22,18 @@ class Form extends React.Component {
   }
   render() {
     return (
-      <form onSubmit={this.handleSubmit}>
+      <form onSubmit={this.handleSubmit} className="user-form">
         <input
           onChange={this.handleChange}
           required
           value={this.state.value}
           type="text"
           placeholder="Введите ваш запрос"
+          className="user-form__input"
         />
-        <button type="submit">Искать</button>
+        <button type="submit" className="user-form__btn">
+          Искать
+        </button>
       </form>
     )
   }
