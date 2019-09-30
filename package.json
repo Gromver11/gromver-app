@@ -16,8 +16,7 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "eject": "react-scripts eject",
-    "eslint": "eslint",
-    "precommit": "lint-staged"
+    "eslint": "eslint"
   },
   "browserslist": {
     "production": [
@@ -35,7 +34,7 @@
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "husky": "^3.0.4",
-    "lint-staged": "^9.2.5",
+    "lint-staged": "^9.4.0",
     "prettier": "^1.18.2",
     "redux-devtools-extension": "^2.13.8"
   },
@@ -45,5 +44,11 @@
       "prettier --write",
       "git add"
     ]
+  },
+  "husky": {
+      "hooks": {
+        "pre-commit": "lint-staged"
+      }
+    
   }
 }

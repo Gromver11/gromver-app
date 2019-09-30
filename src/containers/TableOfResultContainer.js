@@ -8,11 +8,13 @@ import { dataFetch } from '../actions/index'
 class TableOfResultContainer extends React.Component {
   handleLoadNextPageClick = () => {
     const nextPage = this.props.currentPage + 1
-    this.props.loadPage(this.props.currentRep, nextPage)
+    const { currentRep } = this.props
+    this.props.loadPage(currentRep, nextPage)
   }
   handleLoadPrevPageClick = () => {
     const prevPage = this.props.currentPage - 1
-    this.props.loadPage(this.props.currentRep, prevPage)
+    const { currentRep } = this.props
+    this.props.loadPage(currentRep, prevPage)
   }
   render() {
     const { ids, list, currentPage, totalPages, isFetching } = this.props
