@@ -1,19 +1,36 @@
 import axios from 'axios'
 import { normalize, schema } from 'normalizr'
+export const DATA_REQUEST = 'DATA REQUEST'
+export const DATA_SUCCESS = 'DATA_SUCCESS'
+export const DATA_ERROR = 'DATA_ERROR'
 
 export const API_REQUEST = 'Api request'
+const BASE_URL = 'https://api.github.com/repos/'
 const user = new schema.Entity('recievedForks', { idAttribute: 'id' })
-const CallApi = url => {
-  return axios.get(url)
+const CallApi = (endpoint, page) => {
+  const fullUrl =
+    endpoint.indexOf(BASE_URL) === -1
+      ? BASE_URL + endpoint + `/forks?page=${page}&per_page=20`
+      : endpoint + `/forks?page=${page}&per_page=20`
+  return axios.get(fullUrl)
 }
-const getPageCount = response => {
+const getPagesCount = response => {
   const link = response.headers.link
   if (!link) {
     return null
   }
-  const arrLink = link.split(';')[1]
-  const result = arrLink.slice(arrLink.lastIndexOf('=') + 1, -1)
-  return Number(result) + 1
+  const links = link.split(',')
+  const lastPage = links.find(s => s.indexOf('rel="last"') > -1)
+  if (lastPage) {
+    return (
+      Number(
+        lastPage
+          .trim()
+          .split('=')[1]
+          .slice(0, -9)
+      ) + 1
+    )
+  }
 }
 const api = store => next => action => {
   if (!action[API_REQUEST]) {
@@ -24,16 +41,18 @@ const api = store => next => action => {
     delete NewAction[API_REQUEST]
     return NewAction
   }
-  const [DATA_REQUEST, DATA_SUCCESS, DATA_ERROR] = action[API_REQUEST].types
   next(actionWith({ type: DATA_REQUEST }))
-  const { URL } = action[API_REQUEST]
-  return CallApi(URL).then(
+  const { currentRep, currentPage } = action[API_REQUEST]
+  return CallApi(currentRep, currentPage).then(
     res =>
       next(
         actionWith({
           type: DATA_SUCCESS,
           payload: normalize(res.data, [user]),
-          totalPageCount: getPageCount(res),
+          currentPage: Number(currentPage),
+          totalPages: getPagesCount(res),
+          currentRep: currentRep,
+          test: res,
         })
       ),
     error =>
