@@ -2,19 +2,27 @@ import React from 'react'
 const Paginate = props => {
   if (props.currentPage === 1 && props.totalPages === null) {
     return (
-      <div>
-        {props.currentPage} из {props.currentPage}
+      <div className="paginate__wrapper">
+        <span className="paginate__count">
+          {props.currentPage} из {props.currentPage}
+        </span>
       </div>
     )
   }
   return (
-    <div>
+    <div className="paginate__wrapper">
       {props.currentPage !== 1 && (
-        <button onClick={props.onLoadPrevPage}>Назад</button>
+        <button className="btn paginate__btn" onClick={props.onLoadPrevPage}>
+          {'<<'}
+        </button>
       )}
-      {props.currentPage} of {props.totalPages}
+      <span className="paginate__count">
+        {props.currentPage} of {props.totalPages}
+      </span>
       {props.currentPage !== props.totalPages && (
-        <button onClick={props.onLoadNextPage}>Вперед</button>
+        <button className="btn paginate__btn" onClick={props.onLoadNextPage}>
+          {'>>'}
+        </button>
       )}
     </div>
   )

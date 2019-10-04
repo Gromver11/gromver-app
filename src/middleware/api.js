@@ -21,10 +21,19 @@ const getPagesCount = response => {
   }
   const links = link.split(',')
   const lastPage = links.find(s => s.indexOf('rel="last"') > -1)
+  const prevPage = links.find(s => s.indexOf('rel="prev"') > -1)
   if (lastPage) {
+    return Number(
+      lastPage
+        .trim()
+        .split('=')[1]
+        .slice(0, -9)
+    )
+  }
+  if (!lastPage && prevPage) {
     return (
       Number(
-        lastPage
+        prevPage
           .trim()
           .split('=')[1]
           .slice(0, -9)
@@ -49,9 +58,7 @@ const api = store => next => action => {
         actionWith({
           type: DATA_SUCCESS,
           payload: normalize(res.data, [user]),
-          currentPage: Number(currentPage),
           totalPages: getPagesCount(res),
-          currentRep: currentRep,
           test: res,
         })
       ),

@@ -18,7 +18,7 @@ class Form extends React.Component {
   handleSubmit = e => {
     e.preventDefault()
     this.props.fetchData(this.state.value)
-    this.props.history.push(`/${this.state.value}`)
+    this.props.history.push(`/seacrh&page=1?repository=${this.state.value}`)
   }
   render() {
     return (
