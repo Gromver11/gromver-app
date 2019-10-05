@@ -11,10 +11,8 @@ const store = configureStore()
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-      <div>
-        <Route path="/" component={FormContainer} />
-        <Route path="/:info" component={TableOfResultContainer} />
-      </div>
+      <Route path="/" component={FormContainer} />
+      <Route path="/:info" component={TableOfResultContainer} />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

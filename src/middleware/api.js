@@ -59,7 +59,6 @@ const api = store => next => action => {
           type: DATA_SUCCESS,
           payload: normalize(res.data, [user]),
           totalPages: getPagesCount(res),
-          test: res,
         })
       ),
     error =>

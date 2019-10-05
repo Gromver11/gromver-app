@@ -31,7 +31,7 @@ class TableOfResultContainer extends React.Component {
       return <div>loading...</div>
     }
     return (
-      <div>
+      <>
         <TableOfResult ids={ids} list={list} />
         <Paginate
           currentPage={currentPage}
@@ -39,7 +39,7 @@ class TableOfResultContainer extends React.Component {
           onLoadNextPage={this.handleLoadNextPageClick}
           totalPages={totalPages}
         />
-      </div>
+      </>
     )
   }
 }

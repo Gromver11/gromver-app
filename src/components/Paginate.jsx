@@ -1,4 +1,5 @@
 import React from 'react'
+import './Paginate.css'
 const Paginate = props => {
   if (props.currentPage === 1 && props.totalPages === null) {
     return (
