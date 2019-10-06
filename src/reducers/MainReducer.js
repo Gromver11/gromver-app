@@ -1,7 +1,7 @@
 import { DATA_ERROR, DATA_SUCCESS, DATA_REQUEST } from '../middleware/api'
 const initialState = {
   isFetching: false,
-  error: null,
+  error: false,
   list: null,
   ids: [],
   totalPages: null,
@@ -17,11 +17,12 @@ export const MainReducer = (state = initialState, action) => {
         isFetching: false,
         ids: action.payload.result,
         totalPages: action.totalPages,
+        error: false,
       }
     case DATA_ERROR:
       return {
         ...state,
-        error: action.payload,
+        error: true,
         isFetching: false,
       }
     default:

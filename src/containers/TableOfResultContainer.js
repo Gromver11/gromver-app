@@ -10,6 +10,11 @@ class TableOfResultContainer extends React.Component {
     const { currentRep, currentPage } = this.props
     this.props.loadPage(currentRep, currentPage)
   }
+  componentDidUpdate(PrevProps) {
+    if (this.props.currentRep !== PrevProps.currentRep) {
+      this.props.loadPage(this.props.currentRep)
+    }
+  }
   handleLoadNextPageClick = () => {
     const nextPage = this.props.currentPage + 1
     const { currentRep } = this.props
@@ -23,12 +28,15 @@ class TableOfResultContainer extends React.Component {
     this.props.history.push(`/seacrh&page=${prevPage}?repository=${currentRep}`)
   }
   render() {
-    const { ids, list, currentPage, totalPages, isFetching } = this.props
-    if (ids.length === 0 && !isFetching) {
+    const { ids, list, currentPage, totalPages, isFetching, error } = this.props
+    if (ids.length === 0 && !isFetching && !error) {
       return <div>Форков репозитория не найдено</div>
     }
     if (isFetching) {
       return <div>loading...</div>
+    }
+    if (error) {
+      return <div>Ошибка!</div>
     }
     return (
       <>
@@ -44,7 +52,7 @@ class TableOfResultContainer extends React.Component {
   }
 }
 const mapStateToProps = (state, OwnProps) => {
-  const { ids, list, totalPages, isFetching } = state.MainReducer
+  const { ids, list, totalPages, isFetching, error } = state.MainReducer
   const currentRep = OwnProps.location.search.slice(12)
   const currentPage = Number(OwnProps.match.params.info.slice(12))
   return {
@@ -54,6 +62,7 @@ const mapStateToProps = (state, OwnProps) => {
     totalPages,
     currentRep,
     isFetching,
+    error,
   }
 }
 const mapDispatchToProps = dispatch => {
