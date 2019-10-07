@@ -1,5 +1,6 @@
 import React from 'react'
 import './Paginate.css'
+import PropTypes from 'prop-types'
 const Paginate = props => {
   if (props.currentPage === 1 && props.totalPages === null) {
     return (
@@ -27,6 +28,13 @@ const Paginate = props => {
       )}
     </div>
   )
+}
+Paginate.propTypes = {
+  currentPage: PropTypes.number.isRequired,
+  onLoadNextPage: PropTypes.func.isRequired,
+  onLoadPrevPage: PropTypes.func.isRequired,
+  totalPages: PropTypes.number.isRequired
+
 }
 
 export default Paginate

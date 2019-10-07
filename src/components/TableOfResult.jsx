@@ -1,5 +1,6 @@
 import React from 'react'
 import './TableOfResult.css'
+import PropTypes from 'prop-types'
 const TableOfResult = props => {
   const renderRow = () => {
     const { ids, list } = props
@@ -31,4 +32,8 @@ const TableOfResult = props => {
   )
 }
 
+TableOfResult.propTypes = {
+  ids: PropTypes.array,
+  list: PropTypes.object,
+}
 export default TableOfResult

@@ -4,8 +4,19 @@ import { withRouter } from 'react-router-dom'
 import React from 'react'
 import Paginate from '../components/Paginate'
 import { dataFetch } from '../actions/index'
+import PropTypes from 'prop-types'
 
 class TableOfResultContainer extends React.Component {
+  static propTypes = {
+    loadPage: PropTypes.func.isRequired,
+    ids: PropTypes.array,
+    list: PropTypes.object,
+    currentPage: PropTypes.number.isRequired,
+    totalPages: PropTypes.number,
+    currentRep: PropTypes.string.isRequired,
+    isFetching: PropTypes.bool.isRequired,
+    error: PropTypes.bool,
+  }
   componentDidMount() {
     const { currentRep, currentPage } = this.props
     this.props.loadPage(currentRep, currentPage)

@@ -3,11 +3,16 @@ import { connect } from 'react-redux'
 import UserForm from '../components/UserForm'
 import { withRouter } from 'react-router-dom'
 import React from 'react'
+import PropTypes from 'prop-types'
 
 class FormContainer extends React.Component {
+  static propTypes = {
+    fetchData: PropTypes.func.isRequired,
+  }
   handleSubmit = values => {
     this.props.history.push(`/seacrh&page=1?repository=${values.userInput}`)
   }
+
   render() {
     return (
       <>
