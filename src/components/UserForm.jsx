@@ -2,18 +2,23 @@ import React from 'react'
 import { Field, reduxForm } from 'redux-form'
 import './Form.css'
 import PropTypes from 'prop-types'
+import CustomInput from './CustomInput'
+import { required, maxLength20 } from '../utils/validators'
 
 const UserForm = props => {
-  const { handleSubmit } = props
+  const { handleSubmit, invalid } = props
   return (
     <form onSubmit={handleSubmit} className="user-form">
       <Field
-        component="input"
+        component={CustomInput}
         type="text"
         placeholder="Введите ваш запрос"
         name="userInput"
+        validate={[required, maxLength20]}
       />
-      <button className="user-form__btn">Искать</button>
+      <button type="submit" disabled={invalid} className="user-form__btn">
+        Искать
+      </button>
     </form>
   )
 }

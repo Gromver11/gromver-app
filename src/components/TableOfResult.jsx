@@ -33,7 +33,7 @@ const TableOfResult = props => {
 }
 
 TableOfResult.propTypes = {
-  ids: PropTypes.array,
-  list: PropTypes.object,
+  ids: PropTypes.array.isRequired,
+  list: PropTypes.object.isRequired,
 }
 export default TableOfResult
