@@ -33,8 +33,7 @@ Paginate.propTypes = {
   currentPage: PropTypes.number.isRequired,
   onLoadNextPage: PropTypes.func.isRequired,
   onLoadPrevPage: PropTypes.func.isRequired,
-  totalPages: PropTypes.number.isRequired
-
+  totalPages: PropTypes.number,
 }
 
 export default Paginate
