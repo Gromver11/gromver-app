@@ -1,6 +1,5 @@
 import { connect } from 'react-redux'
 import TableOfResult from '../components/TableOfResult'
-import { withRouter } from 'react-router-dom'
 import React from 'react'
 import Paginate from '../components/Paginate'
 import { dataFetch } from '../actions/index'
@@ -82,9 +81,8 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-export default withRouter(
+export default 
   connect(
     mapStateToProps,
     mapDispatchToProps
   )(TableOfResultContainer)
-)

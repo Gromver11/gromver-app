@@ -1,7 +1,6 @@
 import { dataFetch } from '../actions/index'
 import { connect } from 'react-redux'
 import UserForm from '../components/UserForm'
-import { withRouter } from 'react-router-dom'
 import React from 'react'
 import PropTypes from 'prop-types'
 
@@ -42,9 +41,9 @@ const mapDispatchToProps = dispatch => {
     fetchData: url => dispatch(dataFetch(url)),
   }
 }
-export default withRouter(
+export default 
   connect(
     mapStateToProps,
     mapDispatchToProps
   )(FormContainer)
-)
+
