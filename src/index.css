@@ -2,9 +2,11 @@
     padding: 0;
     margin: 0;
 }
+
 .main-content__greeting {
-     margin-bottom: 20px;
+    margin-bottom: 20px;
 }
+
 .main-content__form {
     width: 251px;
     display: flex;
@@ -22,8 +24,9 @@
 .main-content__table {
     margin-bottom: 20px;
 }
+
 .site__main-content {
     display: flex;
     flex-direction: column;
-    align-items: center;;
+    align-items: center;
 }
