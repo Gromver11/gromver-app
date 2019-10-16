@@ -13,9 +13,5 @@ border-radius: 20px;
 .table__cell {
 background: #F5D7BF;
 padding: 10px;
-}
-
-.table__cell--caption {
 font-size: 18px;
-padding: 10px;
 }

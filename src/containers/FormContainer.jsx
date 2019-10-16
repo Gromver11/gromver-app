@@ -20,7 +20,7 @@ class FormContainer extends React.Component {
   render() {
     return (
       <>
-        <h1>Приветствую Вас! Заполните поле ввода</h1>
+        <h1 className="main-content__greeting">Приветствую Вас! Заполните поле ввода</h1>
         <UserForm
           onSubmit={this.handleSubmit}
           initialValues={this.getInitialValues()}

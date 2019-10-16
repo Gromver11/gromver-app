@@ -14,17 +14,17 @@ const TableOfResult = props => {
     ))
   }
   return (
-    <table className="table">
+    <table className="main-content__table table">
       <tbody>
         <tr className="table__row">
-          <th className="table__cell table__cell--caption">
+          <th className="table__cell">
             Полное название репозитория
           </th>
-          <th className="table__cell table__cell--caption">Владелец</th>
-          <th className="table__cell table__cell--caption">
+          <th className="table__cell">Владелец</th>
+          <th className="table__cell">
             Ссылка на репозиторий форка
           </th>
-          <th className="table__cell table__cell--caption">Кол-во звезд</th>
+          <th className="table__cell">Кол-во звезд</th>
         </tr>
         {renderRow()}
       </tbody>

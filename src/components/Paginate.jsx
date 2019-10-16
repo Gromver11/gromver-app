@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const Paginate = props => {
   if (props.currentPage === 1 && props.totalPages === null) {
     return (
-      <div className="paginate__wrapper">
+      <div className="main-content__paginate paginate">
         <span className="paginate__count">
           {props.currentPage} из {props.currentPage}
         </span>
@@ -12,7 +12,7 @@ const Paginate = props => {
     )
   }
   return (
-    <div className="paginate__wrapper">
+    <div className="main-content__paginate paginate">
       {props.currentPage !== 1 && (
         <button className="btn paginate__btn" onClick={props.onLoadPrevPage}>
           {'<<'}

@@ -7,7 +7,7 @@ const CustomIntput = ({
   meta: { touched, error},
 }) => {
   return (
-    <div className="wrapper">
+    <div className="wrapper user-form__wrapper">
       <input className="user-form__input" {...input} placeholder={placeholder} type={type} />
       {touched &&
         ((error && <span className="user-form__error">{error}!</span>) )}

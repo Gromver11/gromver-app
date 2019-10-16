@@ -22,9 +22,6 @@
     border-radius: 5px;
     font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
     overflow: hidden;
-    width: 251px;
-    display: flex;
-    flex-wrap: nowrap;
 }
 
 .user-form__input {
@@ -37,7 +34,7 @@
     color: red;
 }
 
-.wrapper {
+.user-form__wrapper {
     display: flex;
     flex-direction: column;
 }

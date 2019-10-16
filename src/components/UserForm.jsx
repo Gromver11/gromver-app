@@ -8,7 +8,7 @@ import { required, maxLength20 } from '../utils/validators'
 const UserForm = props => {
   const { handleSubmit, invalid } = props
   return (
-    <form onSubmit={handleSubmit} className="user-form">
+    <form onSubmit={handleSubmit} className="main-content__form user-form">
       <Field
         component={CustomInput}
         type="text"
