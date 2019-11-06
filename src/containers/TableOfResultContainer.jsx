@@ -2,7 +2,7 @@ import { connect } from 'react-redux'
 import TableOfResult from '../components/TableOfResult'
 import React from 'react'
 import Paginate from '../components/Paginate'
-import { dataFetch } from '../actions/index'
+import { fetchForks } from '../actions/index'
 import PropTypes from 'prop-types'
 
 class TableOfResultContainer extends React.Component {
@@ -62,7 +62,7 @@ class TableOfResultContainer extends React.Component {
   }
 }
 const mapStateToProps = (state, OwnProps) => {
-  const { ids, list, totalPages, isFetching, error } = state.MainReducer
+  const { ids, list, totalPages, isFetching, error } = state.mainReducer
   const currentRep = OwnProps.location.search.slice(12)
   const currentPage = Number(OwnProps.match.params.info.slice(12))
   return {
@@ -77,7 +77,7 @@ const mapStateToProps = (state, OwnProps) => {
 }
 const mapDispatchToProps = dispatch => {
   return {
-    loadPage: (endpoint, page) => dispatch(dataFetch(endpoint, page)),
+    loadPage: (endpoint, page) => dispatch(fetchForks(endpoint, page)),
   }
 }
 
