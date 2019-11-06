@@ -1,10 +1,5 @@
-import { createStore, applyMiddleware } from 'redux'
-import rootReducer from '../reducers/index'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import api from '../middleware/api'
-
-const configureStore = preloadedState => {
-  return createStore(rootReducer, composeWithDevTools(applyMiddleware(api)))
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('/configureStore.prod');
+} else {
+  module.exports = require('./configureStore.dev');
 }
-
-export default configureStore

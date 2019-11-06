@@ -7,7 +7,7 @@ import PropTypes from 'prop-types';
 
 class TableOfResultContainer extends React.Component {
   static propTypes = {
-    loadPage: PropTypes.func.isRequired,
+    fetchForks: PropTypes.func.isRequired,
     ids: PropTypes.array,
     list: PropTypes.object,
     currentPage: PropTypes.number.isRequired,
@@ -28,7 +28,7 @@ class TableOfResultContainer extends React.Component {
   handleLoadNextPageClick = () => {
     const nextPage = this.props.currentPage + 1;
     const { currentRep } = this.props;
-    this.props.loadPage(currentRep, nextPage);
+    this.props.fetchForks(currentRep, nextPage);
     this.props.history.push(
       `/seacrh&page=${nextPage}?repository=${currentRep}`
     );
@@ -36,13 +36,12 @@ class TableOfResultContainer extends React.Component {
   handleLoadPrevPageClick = () => {
     const prevPage = this.props.currentPage - 1;
     const { currentRep } = this.props;
-    this.props.loadPage(currentRep, prevPage);
+    this.props.fetchForks(currentRep, prevPage);
     this.props.history.push(
       `/seacrh&page=${prevPage}?repository=${currentRep}`
     );
   };
   render() {
-    console.log(this.props)
     const {
       ids,
       list,
