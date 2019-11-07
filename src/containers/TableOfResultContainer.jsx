@@ -1,77 +1,56 @@
 import { connect } from 'react-redux';
 import TableOfResult from '../components/TableOfResult';
-import React from 'react';
+import React, { useEffect } from 'react';
 import Paginate from '../components/Paginate';
 import { fetchForks } from '../actions/index';
 import PropTypes from 'prop-types';
 
-class TableOfResultContainer extends React.Component {
-  static propTypes = {
-    fetchForks: PropTypes.func.isRequired,
-    ids: PropTypes.array,
-    list: PropTypes.object,
-    currentPage: PropTypes.number.isRequired,
-    totalPages: PropTypes.number,
-    currentRep: PropTypes.string.isRequired,
-    isFetching: PropTypes.bool.isRequired,
-    error: PropTypes.bool,
+const TableOfResultContainer = ({
+  ids,
+  list,
+  currentPage,
+  totalPages,
+  isFetching,
+  error,
+  currentRep,
+  fetchForks,
+  history,
+}) => {
+  useEffect(() => {
+    fetchForks(currentRep, currentPage);
+  }, [currentRep, currentPage, fetchForks]);
+
+  const handleLoadNextPageClick = () => {
+    const nextPage = currentPage + 1;
+    fetchForks(currentRep, nextPage);
+    history.push(`/seacrh&page=${nextPage}?repository=${currentRep}`);
   };
-  componentDidMount() {
-    const { currentRep, currentPage } = this.props;
-    this.props.fetchForks(currentRep, currentPage);
-  }
-  componentDidUpdate(PrevProps) {
-    if (this.props.currentRep !== PrevProps.currentRep) {
-      this.props.fetchForks(this.props.currentRep);
-    }
-  }
-  handleLoadNextPageClick = () => {
-    const nextPage = this.props.currentPage + 1;
-    const { currentRep } = this.props;
-    this.props.fetchForks(currentRep, nextPage);
-    this.props.history.push(
-      `/seacrh&page=${nextPage}?repository=${currentRep}`
-    );
+  const handleLoadPrevPageClick = () => {
+    const prevPage = currentPage - 1;
+    fetchForks(currentRep, prevPage);
+    history.push(`/seacrh&page=${prevPage}?repository=${currentRep}`);
   };
-  handleLoadPrevPageClick = () => {
-    const prevPage = this.props.currentPage - 1;
-    const { currentRep } = this.props;
-    this.props.fetchForks(currentRep, prevPage);
-    this.props.history.push(
-      `/seacrh&page=${prevPage}?repository=${currentRep}`
-    );
-  };
-  render() {
-    const {
-      ids,
-      list,
-      currentPage,
-      totalPages,
-      isFetching,
-      error,
-    } = this.props;
-    if (ids.length === 0 && !isFetching && !error) {
-      return <div>Форков репозитория не найдено</div>;
-    }
-    if (isFetching) {
-      return <div>loading...</div>;
-    }
-    if (error) {
-      return <div>Ошибка!</div>;
-    }
-    return (
-      <>
-        <TableOfResult ids={ids} list={list} />
-        <Paginate
-          currentPage={currentPage}
-          onLoadPrevPage={this.handleLoadPrevPageClick}
-          onLoadNextPage={this.handleLoadNextPageClick}
-          totalPages={totalPages}
-        />
-      </>
-    );
+  if (ids.length === 0 && !isFetching && !error) {
+    return <div>Форков репозитория не найдено</div>;
   }
-}
+  if (isFetching) {
+    return <div>loading...</div>;
+  }
+  if (error) {
+    return <div>Ошибка!</div>;
+  }
+  return (
+    <>
+      <TableOfResult ids={ids} list={list} />
+      <Paginate
+        currentPage={currentPage}
+        onLoadPrevPage={handleLoadPrevPageClick}
+        onLoadNextPage={handleLoadNextPageClick}
+        totalPages={totalPages}
+      />
+    </>
+  );
+};
 const mapStateToProps = (state, OwnProps) => {
   const { ids, list, totalPages, isFetching, error } = state.mainReducer;
   const currentRep = OwnProps.location.search.slice(12);
@@ -85,6 +64,16 @@ const mapStateToProps = (state, OwnProps) => {
     isFetching,
     error,
   };
+};
+TableOfResultContainer.propTypes = {
+  fetchForks: PropTypes.func.isRequired,
+  ids: PropTypes.array,
+  list: PropTypes.object,
+  currentPage: PropTypes.number.isRequired,
+  totalPages: PropTypes.number,
+  currentRep: PropTypes.string.isRequired,
+  isFetching: PropTypes.bool.isRequired,
+  error: PropTypes.bool,
 };
 
 export default connect(
