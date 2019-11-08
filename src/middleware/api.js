@@ -52,23 +52,24 @@ const api = store => next => action => {
   };
   next(actionWith({ type: DATA_REQUEST }));
   const { currentRep, currentPage } = action[API_REQUEST];
-  return callApi(currentRep, currentPage).then(
-    res =>
+  return callApi(currentRep, currentPage)
+    .then(res =>
       next(
         actionWith({
           type: DATA_SUCCESS,
           payload: normalize(res.data, [user]),
           totalPages: getPagesCount(res),
         })
-      ),
-    error =>
+      )
+    )
+    .catch(error =>
       next(
         actionWith({
           type: DATA_ERROR,
           payload: error.message,
         })
       )
-  );
+    );
 };
 
 export default api;
