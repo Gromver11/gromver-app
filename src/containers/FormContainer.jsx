@@ -3,35 +3,30 @@ import UserForm from '../components/UserForm';
 import React from 'react';
 import PropTypes from 'prop-types';
 
-class FormContainer extends React.Component {
-  static propTypes = {
-    currentRep: PropTypes.string.isRequired,
+const FormContainer = props => {
+  const handleSubmit = values => {
+    props.history.push(`/seacrh&page=1?repository=${values.userInput}`);
   };
-  handleSubmit = values => {
-    this.props.history.push(`/seacrh&page=1?repository=${values.userInput}`);
-  };
-  getInitialValues = () => {
+  const getInitialValues = () => {
     return {
-      userInput: this.props.currentRep,
+      userInput: props.currentRep,
     };
   };
-  render() {
-    return (
-      <>
-        <h1 className="greeting">Приветствую Вас! Заполните поле ввода</h1>
-        <UserForm
-          onSubmit={this.handleSubmit}
-          initialValues={this.getInitialValues()}
-        />
-      </>
-    );
-  }
-}
+  return (
+    <>
+      <h1 className="greeting">Приветствую Вас! Заполните поле ввода</h1>
+      <UserForm onSubmit={handleSubmit} initialValues={getInitialValues()} />
+    </>
+  );
+};
 
 const mapStateToProps = (state, OwnProps) => {
   const currentRep = OwnProps.location.search.slice(12);
   return {
     currentRep,
   };
+};
+FormContainer.propTypes = {
+  currentRep: PropTypes.string.isRequired,
 };
 export default connect(mapStateToProps)(FormContainer);
