@@ -1,0 +1,14 @@
+.input {
+    background: #fff;
+    color: #636466;
+    padding: 6px;
+}
+
+.error {
+    color: red;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+}

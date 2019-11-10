@@ -1,15 +1,13 @@
-.user-form__btn {
+.btn {
     background: green;
-    border: 0;
     color: #fff;
-    cursor: pointer;
     font-weight: bold;
     width: 78px;
     height: 31px;
 
 }
 
-.user-form__btn:disabled {
+.btn:disabled {
     border: 1px solid #999999;
     background-color: #cccccc;
     color: #666666;
@@ -18,23 +16,12 @@
     width: 78px;
 }
 
-.user-form {
+.userForm {
     border-radius: 5px;
     font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
     overflow: hidden;
-}
-
-.user-form__input {
-    background: #fff;
-    color: #636466;
-    padding: 6px;
-}
-
-.user-form__error {
-    color: red;
-}
-
-.user-form__wrapper {
+    width: 251px;
     display: flex;
-    flex-direction: column;
+    flex-wrap: nowrap;
+    margin-bottom: 30px;
 }

@@ -3,30 +3,17 @@
     margin: 0;
 }
 
-.main-content__greeting {
+.greeting {
     margin-bottom: 20px;
 }
 
-.main-content__form {
-    width: 251px;
-    display: flex;
-    flex-wrap: nowrap;
-    margin-bottom: 30px;
-}
-
-.main-content__paginate {
-    display: flex;
-    justify-content: center;
-    max-width: 963px;
-    align-items: center
-}
-
-.main-content__table {
-    margin-bottom: 20px;
-}
-
-.site__main-content {
+.main-content {
     display: flex;
     flex-direction: column;
     align-items: center;
+}
+.btn {
+    border: 0;
+    outline: none;
+    cursor: pointer;
 }
