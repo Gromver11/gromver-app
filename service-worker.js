@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/gromver-app/precache-manifest.fbaa18461af153aa21ae049874e46b09.js"
+  "/gromver-app/precache-manifest.1830ee673aa655cf09f1c28f5df06f21.js"
 );
 
 self.addEventListener('message', (event) => {
