@@ -22,12 +22,10 @@ const TableOfResultContainer = ({
 
   const handleLoadNextPageClick = () => {
     const nextPage = currentPage + 1;
-    fetchForks(currentRep, nextPage);
     history.push(`/seacrh&page=${nextPage}?repository=${currentRep}`);
   };
   const handleLoadPrevPageClick = () => {
     const prevPage = currentPage - 1;
-    fetchForks(currentRep, prevPage);
     history.push(`/seacrh&page=${prevPage}?repository=${currentRep}`);
   };
   if (ids.length === 0 && !isFetching && !error) {
@@ -37,7 +35,7 @@ const TableOfResultContainer = ({
     return <div>loading...</div>;
   }
   if (error) {
-    return <div>Ошибка!</div>;
+    return <div>Page Not Found (Error 404)</div>;
   }
   return (
     <>
