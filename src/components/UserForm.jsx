@@ -3,7 +3,7 @@ import { Form, Field } from 'react-final-form';
 import styles from './Form.module.css';
 import PropTypes from 'prop-types';
 import CustomInput from './CustomInput';
-import { required } from '../utils/validators';
+import { required, checkField, composeValidators } from '../utils/validators';
 
 const UserForm = props => {
   const { onSubmit, initialValues } = props;
@@ -16,7 +16,7 @@ const UserForm = props => {
             type="text"
             placeholder="Введите ваш запрос"
             name="userInput"
-            validate={required}
+            validate={composeValidators(required, checkField)}
           />
           <button
             type="submit"

@@ -5,7 +5,9 @@ import PropTypes from 'prop-types';
 
 const FormContainer = props => {
   const handleSubmit = values => {
-    props.history.push(`/seacrh&page=1?repository=${values.userInput}`);
+    props.history.push(
+      `/seacrh&page=1?repository=${values.userInput.toLowerCase()}`
+    );
   };
   const getInitialValues = () => {
     return {
@@ -14,7 +16,10 @@ const FormContainer = props => {
   };
   return (
     <>
-      <h1 className="greeting">Приветствую Вас! Заполните поле ввода</h1>
+      <p className="greeting">
+        Введите имя пользователя и название репозитория для поиска (Формат
+        запроса: Owner/RepoName)
+      </p>
       <UserForm onSubmit={handleSubmit} initialValues={getInitialValues()} />
     </>
   );
