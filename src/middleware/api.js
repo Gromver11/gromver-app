@@ -1,5 +1,6 @@
 import axios from 'axios';
 import { normalize, schema } from 'normalizr';
+import * as R from 'ramda';
 export const DATA_REQUEST = 'DATA REQUEST';
 export const DATA_SUCCESS = 'DATA_SUCCESS';
 export const DATA_ERROR = 'DATA_ERROR';
@@ -47,8 +48,7 @@ const api = store => next => action => {
   }
   const actionWith = data => {
     const NewAction = Object.assign({}, action, data);
-    delete NewAction[API_REQUEST];
-    return NewAction;
+    return R.omit([API_REQUEST], NewAction);
   };
   next(actionWith({ type: DATA_REQUEST }));
   const { currentRep, currentPage } = action[API_REQUEST];
