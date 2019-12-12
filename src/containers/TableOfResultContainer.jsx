@@ -35,7 +35,7 @@ const TableOfResultContainer = ({
     return <div>loading...</div>;
   }
   if (error) {
-    return <div>Page Not Found (Error 404)</div>;
+    return <div>Данного репозитория не существует</div>;
   }
   return (
     <>
