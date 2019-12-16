@@ -1,0 +1,27 @@
+.btn {
+    background: green;
+    color: #fff;
+    font-weight: bold;
+    width: 78px;
+    height: 31px;
+
+}
+
+.btn:disabled {
+    border: 1px solid #999999;
+    background-color: #cccccc;
+    color: #666666;
+    cursor: not-allowed;
+    height: 31px;
+    width: 78px;
+}
+
+.userForm {
+    border-radius: 5px;
+    font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
+    overflow: hidden;
+    width: 251px;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-bottom: 30px;
+}
