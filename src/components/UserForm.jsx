@@ -5,29 +5,44 @@ import PropTypes from 'prop-types';
 import CustomInput from './CustomInput';
 import { required, checkField, composeValidators } from '../utils/validators';
 
-const UserForm = props => {
-  const { onSubmit, initialValues } = props;
+const UserForm = ({ history, location }) => {
+  const currentRep = location.search.slice(12);
+
+  const getInitialValues = () => {
+    return {
+      userInput: currentRep,
+    };
+  };
+  const handleSubmit = values => {
+    history.push(`/seacrh&page=1?repository=${values.userInput.toLowerCase()}`);
+  };
   return (
-    <Form onSubmit={onSubmit} initialValues={initialValues}>
-      {({ handleSubmit, invalid }) => (
-        <form onSubmit={handleSubmit} className={styles.userForm}>
-          <Field
-            component={CustomInput}
-            type="text"
-            placeholder="Введите ваш запрос"
-            name="userInput"
-            validate={composeValidators(required, checkField)}
-          />
-          <button
-            type="submit"
-            className={`${styles.btn} btn`}
-            disabled={invalid}
-          >
-            Искать
-          </button>
-        </form>
-      )}
-    </Form>
+    <>
+      <p className="greeting">
+        Введите имя пользователя и название репозитория для поиска (Формат
+        запроса: Owner/RepoName)
+      </p>
+      <Form onSubmit={handleSubmit} initialValues={getInitialValues()}>
+        {({ handleSubmit, invalid }) => (
+          <form onSubmit={handleSubmit} className={styles.userForm}>
+            <Field
+              component={CustomInput}
+              type="text"
+              placeholder="Введите ваш запрос"
+              name="userInput"
+              validate={composeValidators(required, checkField)}
+            />
+            <button
+              type="submit"
+              className={`${styles.btn} btn`}
+              disabled={invalid}
+            >
+              Искать
+            </button>
+          </form>
+        )}
+      </Form>
+    </>
   );
 };
 UserForm.propTypes = {
