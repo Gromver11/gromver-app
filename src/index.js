@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import UserForm from './components/UseForm/UserForm';
+import UserForm from './components/UserForm/UserForm';
 import TableOfResults from './components/TableOfResults/TableOfResults';
 import configureStore from './store/configureStore';
 import { Provider } from 'react-redux';
