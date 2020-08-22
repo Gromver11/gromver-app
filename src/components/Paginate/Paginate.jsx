@@ -7,6 +7,8 @@ const Paginate = ({ history, location, match }) => {
 
   const currentRep = location.search.slice(12);
 
+  const totalPages = useSelector(selectTotalPages);
+
   const ids = useSelector(selectIds);
 
   const handleLoadNextPageClick = () => {
@@ -17,7 +19,6 @@ const Paginate = ({ history, location, match }) => {
     const prevPage = currentPage - 1;
     history.push(`/seacrh&page=${prevPage}?repository=${currentRep}`);
   };
-  const totalPages = useSelector(selectTotalPages);
 
   if (ids.length !== 0 && totalPages === null) {
     return (

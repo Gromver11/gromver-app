@@ -8,7 +8,6 @@ import {
   selectIsFetchingState,
   selectError,
   selectIds,
-  selectList,
 } from '../../selectors/index';
 
 const TableOfResults = ({ location, match }) => {
@@ -23,8 +22,6 @@ const TableOfResults = ({ location, match }) => {
   const error = useSelector(selectError);
 
   const ids = useSelector(selectIds);
-
-  const list = useSelector(selectList);
 
   useEffect(() => {
     dispatch(fetchForks(currentRep, currentPage));
@@ -58,7 +55,7 @@ const TableOfResults = ({ location, match }) => {
             <th className={styles.caption}>Ссылка на репозиторий форка</th>
             <th className={styles.caption}>Кол-во звезд</th>
           </tr>
-          <RowsOfTable ids={ids} list={list} />
+          <RowsOfTable />
         </tbody>
       </table>
     </div>
