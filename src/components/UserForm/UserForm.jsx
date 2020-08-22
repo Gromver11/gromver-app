@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import { Form, Field } from 'react-final-form';
 import styles from './UserForm.module.css';
 import PropTypes from 'prop-types';
@@ -17,9 +17,14 @@ const UserForm = ({ history, location }) => {
       userInput: currentRep,
     };
   };
-  const handleSubmit = values => {
-    history.push(`/seacrh&page=1?repository=${values.userInput.toLowerCase()}`);
-  };
+  const handleSubmit = useCallback(
+    values => {
+      history.push(
+        `/seacrh&page=1?repository=${values.userInput.toLowerCase()}`
+      );
+    },
+    [history]
+  );
   return (
     <>
       <p className="greeting">

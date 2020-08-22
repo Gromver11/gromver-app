@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useCallback } from 'react';
 import styles from './Paginate.module.css';
 import { useSelector } from 'react-redux';
 import { selectTotalPages, selectIds } from '../../selectors/index';
@@ -11,14 +11,14 @@ const Paginate = ({ history, location, match }) => {
 
   const ids = useSelector(selectIds);
 
-  const handleLoadNextPageClick = () => {
+  const handleLoadNextPageClick = useCallback(() => {
     const nextPage = currentPage + 1;
     history.push(`/seacrh&page=${nextPage}?repository=${currentRep}`);
-  };
-  const handleLoadPrevPageClick = () => {
+  }, [currentPage, currentRep, history]);
+  const handleLoadPrevPageClick = useCallback(() => {
     const prevPage = currentPage - 1;
     history.push(`/seacrh&page=${prevPage}?repository=${currentRep}`);
-  };
+  }, [currentPage, currentRep, history]);
 
   if (ids.length !== 0 && totalPages === null) {
     return (
