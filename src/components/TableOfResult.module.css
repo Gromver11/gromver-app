@@ -7,7 +7,6 @@
     color: #656665;
     border: 16px solid #ECE9E0;
     border-radius: 20px;
-    margin-bottom: 20px;
 
 }
 
@@ -15,4 +14,9 @@
     background: #F5D7BF;
     padding: 10px;
     font-size: 18px;
+}
+
+.wrap {
+    height: 750px;
+    margin-bottom: 20px;
 }
