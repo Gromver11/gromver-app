@@ -9,7 +9,7 @@ import {
   selectError,
   selectIds,
   selectList,
-} from '../store/TableOfResults/selectors';
+} from '../selectors/index';
 
 const TableOfResult = ({ location, match }) => {
   const currentRep = location.search.slice(12);
