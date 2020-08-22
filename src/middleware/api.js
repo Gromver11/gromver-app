@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { normalize, schema } from 'normalizr';
-import * as R from 'ramda';
+import { omit } from 'ramda';
 import {
   GET_FORKS_ERROR,
   GET_FORKS_REQUEST,
@@ -49,8 +49,8 @@ const api = store => next => action => {
     return next(action);
   }
   const actionWith = data => {
-    const NewAction = Object.assign({}, action, data);
-    return R.omit([API_REQUEST], NewAction);
+    const newAction = Object.assign({}, action, data);
+    return omit([API_REQUEST], newAction);
   };
   next(actionWith({ type: GET_FORKS_REQUEST }));
   const { currentRep, currentPage } = action[API_REQUEST];
