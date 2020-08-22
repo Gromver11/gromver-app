@@ -1,7 +1,6 @@
 import React, { useCallback } from 'react';
 import { Form, Field } from 'react-final-form';
 import styles from './UserForm.module.css';
-import PropTypes from 'prop-types';
 import CustomInput from '../CustomInput/CustomInput';
 import {
   required,
@@ -53,9 +52,5 @@ const UserForm = ({ history, location }) => {
       </Form>
     </>
   );
-};
-UserForm.propTypes = {
-  onSubmit: PropTypes.func,
-  initialValues: PropTypes.object,
 };
 export default UserForm;
