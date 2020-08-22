@@ -1,0 +1,3 @@
+export const GET_FORKS_REQUEST = 'DATA REQUEST';
+export const GET_FORKS_SUCCESS = 'DATA_SUCCESS';
+export const GET_FORKS_ERROR = 'DATA_ERROR';

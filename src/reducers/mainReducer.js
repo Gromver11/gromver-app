@@ -1,4 +1,8 @@
-import { DATA_ERROR, DATA_SUCCESS, DATA_REQUEST } from '../middleware/api';
+import {
+  GET_FORKS_ERROR,
+  GET_FORKS_REQUEST,
+  GET_FORKS_SUCCESS,
+} from '../types/index';
 const initialState = {
   isFetching: false,
   error: false,
@@ -8,9 +12,9 @@ const initialState = {
 };
 export const mainReducer = (state = initialState, action) => {
   switch (action.type) {
-    case DATA_REQUEST:
+    case GET_FORKS_REQUEST:
       return { ...state, isFetching: true };
-    case DATA_SUCCESS:
+    case GET_FORKS_SUCCESS:
       return {
         ...state,
         list: action.payload.entities.recievedForks,
@@ -19,7 +23,7 @@ export const mainReducer = (state = initialState, action) => {
         totalPages: action.totalPages,
         error: false,
       };
-    case DATA_ERROR:
+    case GET_FORKS_ERROR:
       return {
         ...state,
         error: true,
