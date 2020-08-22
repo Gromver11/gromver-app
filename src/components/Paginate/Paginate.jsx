@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './Paginate.module.css';
 import { useSelector } from 'react-redux';
-import { selectTotalPages, selectIds } from '../selectors/index';
+import { selectTotalPages, selectIds } from '../../selectors/index';
 const Paginate = ({ history, location, match }) => {
   const currentPage = Number(match.params.info.slice(12));
 

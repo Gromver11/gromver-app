@@ -1,9 +1,13 @@
 import React from 'react';
 import { Form, Field } from 'react-final-form';
-import styles from './Form.module.css';
+import styles from './UserForm.module.css';
 import PropTypes from 'prop-types';
-import CustomInput from './CustomInput';
-import { required, checkField, composeValidators } from '../utils/validators';
+import CustomInput from '../CustomInput/CustomInput';
+import {
+  required,
+  checkField,
+  composeValidators,
+} from '../../utils/validators';
 
 const UserForm = ({ history, location }) => {
   const currentRep = location.search.slice(12);
