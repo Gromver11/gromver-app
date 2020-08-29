@@ -1,9 +1,11 @@
 import axios from 'axios';
 import { normalize, schema } from 'normalizr';
-import * as R from 'ramda';
-export const DATA_REQUEST = 'DATA REQUEST';
-export const DATA_SUCCESS = 'DATA_SUCCESS';
-export const DATA_ERROR = 'DATA_ERROR';
+import { omit } from 'ramda';
+import {
+  GET_FORKS_ERROR,
+  GET_FORKS_REQUEST,
+  GET_FORKS_SUCCESS,
+} from '../types/index';
 
 export const API_REQUEST = 'Api request';
 const BASE_URL = 'https://api.github.com/repos/';
@@ -47,16 +49,16 @@ const api = store => next => action => {
     return next(action);
   }
   const actionWith = data => {
-    const NewAction = Object.assign({}, action, data);
-    return R.omit([API_REQUEST], NewAction);
+    const newAction = Object.assign({}, action, data);
+    return omit([API_REQUEST], newAction);
   };
-  next(actionWith({ type: DATA_REQUEST }));
+  next(actionWith({ type: GET_FORKS_REQUEST }));
   const { currentRep, currentPage } = action[API_REQUEST];
   return callApi(currentRep, currentPage)
     .then(res =>
       next(
         actionWith({
-          type: DATA_SUCCESS,
+          type: GET_FORKS_SUCCESS,
           payload: normalize(res.data, [user]),
           totalPages: getPagesCount(res),
         })
@@ -65,7 +67,7 @@ const api = store => next => action => {
     .catch(error =>
       next(
         actionWith({
-          type: DATA_ERROR,
+          type: GET_FORKS_ERROR,
           payload: error.message,
         })
       )
