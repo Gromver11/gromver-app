@@ -1,15 +1,15 @@
 {
   "files": {
-    "main.css": "/gromver-app/static/css/main.a73a3da9.chunk.css",
-    "main.js": "/gromver-app/static/js/main.39a98a30.chunk.js",
-    "main.js.map": "/gromver-app/static/js/main.39a98a30.chunk.js.map",
+    "main.css": "/gromver-app/static/css/main.62e1645d.chunk.css",
+    "main.js": "/gromver-app/static/js/main.a7239a25.chunk.js",
+    "main.js.map": "/gromver-app/static/js/main.a7239a25.chunk.js.map",
     "runtime~main.js": "/gromver-app/static/js/runtime~main.16f2ea2c.js",
     "runtime~main.js.map": "/gromver-app/static/js/runtime~main.16f2ea2c.js.map",
-    "static/js/2.279ea782.chunk.js": "/gromver-app/static/js/2.279ea782.chunk.js",
-    "static/js/2.279ea782.chunk.js.map": "/gromver-app/static/js/2.279ea782.chunk.js.map",
+    "static/js/2.55d89a01.chunk.js": "/gromver-app/static/js/2.55d89a01.chunk.js",
+    "static/js/2.55d89a01.chunk.js.map": "/gromver-app/static/js/2.55d89a01.chunk.js.map",
     "index.html": "/gromver-app/index.html",
-    "precache-manifest.4630d34eea2da81b99624fc2acfabef5.js": "/gromver-app/precache-manifest.4630d34eea2da81b99624fc2acfabef5.js",
+    "precache-manifest.2c972b6efdc99cf7032ec95e39a5f2a1.js": "/gromver-app/precache-manifest.2c972b6efdc99cf7032ec95e39a5f2a1.js",
     "service-worker.js": "/gromver-app/service-worker.js",
-    "static/css/main.a73a3da9.chunk.css.map": "/gromver-app/static/css/main.a73a3da9.chunk.css.map"
+    "static/css/main.62e1645d.chunk.css.map": "/gromver-app/static/css/main.62e1645d.chunk.css.map"
   }
 }
