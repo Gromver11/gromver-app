@@ -2,7 +2,7 @@ import React from 'react';
 import styles from './RowsOfTable.module.css';
 import { useSelector } from 'react-redux';
 import { selectIds, selectList } from '../../../selectors';
-const RowsOfTable = () => {
+export const RowsOfTable = () => {
   const ids = useSelector(selectIds);
 
   const list = useSelector(selectList);
@@ -16,4 +16,3 @@ const RowsOfTable = () => {
     </tr>
   ));
 };
-export default RowsOfTable;

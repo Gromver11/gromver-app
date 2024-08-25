@@ -1,6 +1,6 @@
 import React from 'react';
 import styles from './TableOfResults.module.css';
-import RowsOfTable from './RowsOfTable/RowsOfTable';
+import {RowsOfTable} from './RowsOfTable/RowsOfTable'
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchForks } from '../../actions/index';
@@ -10,7 +10,7 @@ import {
   selectIds,
 } from '../../selectors';
 
-const TableOfResults = ({ location, match }) => {
+export const TableOfResults = ({ location, match }) => {
   const currentRep = location.search.slice(12);
 
   const dispatch = useDispatch();
@@ -61,4 +61,3 @@ const TableOfResults = ({ location, match }) => {
     </div>
   );
 };
-export default TableOfResults;

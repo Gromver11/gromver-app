@@ -2,7 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './UserForm.module.css';
 
-const UserForm = ({ history, location }) => {
+export const UserForm = ({ history, location }) => {
   const currentRep = location.search.slice(12);
 
   const {
@@ -53,4 +53,3 @@ const UserForm = ({ history, location }) => {
     </>
   );
 };
-export default UserForm;

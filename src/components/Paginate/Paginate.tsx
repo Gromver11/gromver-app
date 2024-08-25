@@ -2,7 +2,7 @@ import React, { useCallback } from 'react';
 import styles from './Paginate.module.css';
 import { useSelector } from 'react-redux';
 import { selectTotalPages, selectIds } from '../../selectors/index';
-const Paginate = ({ history, location, match }) => {
+export const Paginate = ({ history, location, match }) => {
   const currentPage = Number(match.params.info.slice(12));
 
   const currentRep = location.search.slice(12);
@@ -53,5 +53,3 @@ const Paginate = ({ history, location, match }) => {
     </div>
   ) : null;
 };
-
-export default Paginate;
