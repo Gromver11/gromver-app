@@ -1,14 +1,12 @@
 import { createStore, applyMiddleware } from 'redux';
-import rootReducer from '../reducers/index';
+import {rootReducer}  from '../reducers';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import api from '../middleware/api';
 
-const configureStore = preloadedState => {
+export const configureStoreDev = (preloadedState: Record<string,string>)=> {
   return createStore(
     rootReducer,
     preloadedState,
     composeWithDevTools(applyMiddleware(api))
   );
 };
-
-export default configureStore;

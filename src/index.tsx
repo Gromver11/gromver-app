@@ -1,12 +1,13 @@
 import ReactDOM from 'react-dom';
 import React from 'react';
-import configureStore from './store/configureStore';
+import {configureStoreDev}  from './store/configureStore.dev';
+import { configureStore } from './store/configureStore.prod';
 import { Provider } from 'react-redux';
 import { Route, BrowserRouter } from 'react-router-dom';
 import './index.css';
 import {TableOfResults, UserForm, Paginate} from './components'
 
-const store = configureStore();
+const store = process.env.NODE_ENV === 'production' ? configureStore({}) : configureStoreDev({})
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
