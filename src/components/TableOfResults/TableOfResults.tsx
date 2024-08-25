@@ -8,7 +8,7 @@ import {
   selectIsFetchingState,
   selectError,
   selectIds,
-} from '../../selectors/index';
+} from '../../selectors';
 
 const TableOfResults = ({ location, match }) => {
   const currentRep = location.search.slice(12);
