@@ -36,6 +36,13 @@
   },
   "homepage": "http://Gromver11.github.io/gromver-app",
   "devDependencies": {
+    "@types/jest": "^29.5.12",
+    "@types/node": "^22.4.0",
+    "@types/ramda": "^0.30.1",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-redux": "^7.1.33",
+    "@types/react-router-dom": "^5.3.3",
     "eslint-config-prettier": "^6.1.0",
     "eslint-plugin-prettier": "^3.1.0",
     "gh-pages": "^2.1.1",
@@ -43,12 +50,6 @@
     "lint-staged": "^9.4.0",
     "prettier": "^1.18.2",
     "redux-devtools-extension": "^2.13.8",
-    "@types/jest": "^29.5.12",
-    "@types/node": "^22.4.0",
-    "@types/react": "^18.3.3",
-    "@types/react-dom": "^18.3.0",
-    "@types/react-redux": "^7.1.33",
-    "@types/react-router-dom": "^5.3.3",
     "typescript": "^5.5.4"
   },
   "lint-staged": {
