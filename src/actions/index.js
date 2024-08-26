@@ -1,7 +1,6 @@
-import { CommonAction } from '../../typings';
 import { API_REQUEST } from '../middleware/api';
 
-export const fetchForks = (url: string, page = 1): CommonAction => {
+export const fetchForks = (url, page = 1) => {
   return {
     [API_REQUEST]: {
       currentPage: `${page}`,

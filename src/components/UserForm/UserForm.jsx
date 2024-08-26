@@ -1,14 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './UserForm.module.css';
-import type { History, Location } from 'history';
 
-type UserFormProps = {
-  location: Location;
-  history: History;
-};
-
-export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
+const UserForm = ({ history, location }) => {
   const currentRep = location.search.slice(12);
 
   const {
@@ -22,7 +16,7 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
     mode: 'onBlur',
   });
 
-  const onSubmit = (values: { userInput: string }) => {
+  const onSubmit = values => {
     history.push(`/seacrh&page=1?repository=${values.userInput.toLowerCase()}`);
   };
 
@@ -59,3 +53,4 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
     </>
   );
 };
+export default UserForm;
