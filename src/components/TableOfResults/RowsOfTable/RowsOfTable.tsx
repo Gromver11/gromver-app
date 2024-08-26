@@ -1,16 +1,15 @@
 import React from 'react';
 import styles from './RowsOfTable.module.css';
-import { State } from '../../../../typings';
+import { useSelector } from 'react-redux';
+import { selectIds, selectList } from '../../../selectors';
 
 
-type RowsOfTableProps = {
-  ids: State['ids']
-  list: NonNullable<State['list']>
-}
+   export const RowsOfTable = () => {
 
-   export const RowsOfTable:React.FC<RowsOfTableProps> = ({ids, list}) => {
+    const ids = useSelector(selectIds);
+    const list = useSelector(selectList);
 
-    return <>{ids.map(el=> {
+    return <>{ ids && list && ids.map(el=> {
     return (
       <tr key={list[el].id}>
       <td className={styles.cell}>{list[el]['full_name']}</td>
