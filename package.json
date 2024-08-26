@@ -15,6 +15,8 @@
     "axios": "^1.7.5",
     "normalizr": "^3.4.1"
   },
+
+  "homepage": "http://Gromver11.github.io/gromver-app",
   "devDependencies": {
     "@types/react-router-dom": "^5.3.3",
     "lint-staged": "^9.4.0",
@@ -38,7 +40,10 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx",
+    "lint:fix": "eslint . --ext .js,.jsx --fix",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
