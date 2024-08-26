@@ -10,13 +10,13 @@ export const RowsOfTable: React.FC = () => {
   return (
     <>
       {ids && list
-        ? ids.map((el) => {
+        ? ids.map((id) => {
             return (
-              <tr key={list[el].id}>
-                <td className={styles.cell}>{list[el]['full_name']}</td>
-                <td className={styles.cell}>{list[el].owner.login}</td>
-                <td className={styles.cell}>{list[el]['html_url']}</td>
-                <td className={styles.cell}>{list[el]['stargazers_count']}</td>
+              <tr key={id}>
+                <td className={styles.cell}>{list[id]['full_name']}</td>
+                <td className={styles.cell}>{list[id].owner.login}</td>
+                <td className={styles.cell}>{list[id]['html_url']}</td>
+                <td className={styles.cell}>{list[id]['stargazers_count']}</td>
               </tr>
             );
           })
