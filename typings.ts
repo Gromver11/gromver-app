@@ -35,9 +35,9 @@ export type ActionError = {
 export type ActionSuccess = {
     type: typeof GET_FORKS_SUCCESS,
     payload:  {
-        result: string[];
         totalPages: number | null
         forks: {
+        result: string[];
         entities: {
             recievedForks: Fork[]
         }

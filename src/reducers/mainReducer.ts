@@ -23,7 +23,7 @@ export const mainReducer = (state = initialState, action: Action) => {
         ...state,
         list: action.payload.forks.entities.recievedForks,
         isFetching: false,
-        ids: action.payload.result,
+        ids: action.payload.forks.result,
         totalPages: action.payload.totalPages,
         error: false,
       };
