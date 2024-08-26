@@ -1,9 +1,9 @@
-import { API_REQUEST } from './src/middleware/api';
+import { API_REQUEST } from './src/constants';
 import {
   GET_FORKS_REQUEST,
   GET_FORKS_ERROR,
   GET_FORKS_SUCCESS,
-} from './src/types';
+} from './src/constants';
 
 export type Fork = {
   id: string;

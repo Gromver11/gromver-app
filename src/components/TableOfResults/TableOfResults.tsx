@@ -62,7 +62,7 @@ export const TableOfResults: React.FC<TableOfResultsProps> = ({
             <th className={styles.caption}>Ссылка на репозиторий форка</th>
             <th className={styles.caption}>Кол-во звезд</th>
           </tr>
-          {<RowsOfTable />}
+          <RowsOfTable />
         </tbody>
       </table>
     </div>
