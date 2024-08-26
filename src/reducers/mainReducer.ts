@@ -1,26 +1,30 @@
+
 import {
   GET_FORKS_ERROR,
   GET_FORKS_REQUEST,
   GET_FORKS_SUCCESS,
-} from '../types/index';
-const initialState= {
+} from '../types';
+import type {State, Action} from '../../typings'
+
+
+const initialState: State  = {
   isFetching: false,
   error: false,
   list: null,
   ids: [],
   totalPages: null,
 };
-export const mainReducer = (state = initialState, action) => {
+export const mainReducer = (state = initialState, action: Action) => {
   switch (action.type) {
     case GET_FORKS_REQUEST:
       return { ...state, isFetching: true };
     case GET_FORKS_SUCCESS:
       return {
         ...state,
-        list: action.payload.entities.recievedForks,
+        list: action.payload.forks.entities.recievedForks,
         isFetching: false,
         ids: action.payload.result,
-        totalPages: action.totalPages,
+        totalPages: action.payload.totalPages,
         error: false,
       };
     case GET_FORKS_ERROR:

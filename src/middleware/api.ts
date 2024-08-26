@@ -5,19 +5,19 @@ import {
   GET_FORKS_ERROR,
   GET_FORKS_REQUEST,
   GET_FORKS_SUCCESS,
-} from '../types/index';
+} from '../types';
 
 export const API_REQUEST = 'Api request';
 const BASE_URL = 'https://api.github.com/repos/';
 const user = new schema.Entity('recievedForks',  undefined, { idAttribute: 'id' });
-const callApi = (endpoint, page) => {
+const callApi = (endpoint:string, page: number) => {
   const fullUrl =
     endpoint.indexOf(BASE_URL) === -1
       ? BASE_URL + endpoint + `/forks?page=${page}&per_page=20`
       : endpoint + `/forks?page=${page}&per_page=20`;
   return axios.get(fullUrl);
 };
-const getPagesCount = response => {
+const getPagesCount = (response: Response) => {
   const link = response.headers.link;
   if (!link) {
     return null;
@@ -59,8 +59,10 @@ const api = store => next => action => {
       next(
         actionWith({
           type: GET_FORKS_SUCCESS,
-          payload: normalize(res.data, [user]),
-          totalPages: getPagesCount(res),
+          payload:  {
+            forks: normalize(res.data, [user]),
+            totalPages: getPagesCount(res),
+          },
         })
       )
     )
