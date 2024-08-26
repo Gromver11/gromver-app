@@ -8,9 +8,19 @@ import {
   selectIsFetchingState,
   selectError,
   selectIds,
+  selectList,
 } from '../../selectors';
+import type {History, Location}  from 'history'
+import type { match as Match } from "react-router-dom";
 
-export const TableOfResults = ({ location, match }) => {
+type TableOfResultsProps = {
+  location: Location,
+  history: History,
+  match : Match<{info: string}>
+  children: React.ReactNode
+}
+
+export const TableOfResults: React.FC<TableOfResultsProps> = ({ children,  location, match }) => {
   const currentRep = location.search.slice(12);
 
   const dispatch = useDispatch();
@@ -23,11 +33,14 @@ export const TableOfResults = ({ location, match }) => {
 
   const ids = useSelector(selectIds);
 
+  const list = useSelector(selectList);
+
+
   useEffect(() => {
     dispatch(fetchForks(currentRep, currentPage));
   }, [dispatch, currentRep, currentPage]);
 
-  if (ids.length === 0 && !isFetching && !error) {
+  if (ids?.length === 0 && !isFetching && !error) {
     return <div>Форков репозитория не найдено</div>;
   }
   if (isFetching) {
@@ -55,7 +68,7 @@ export const TableOfResults = ({ location, match }) => {
             <th className={styles.caption}>Ссылка на репозиторий форка</th>
             <th className={styles.caption}>Кол-во звезд</th>
           </tr>
-          <RowsOfTable />
+           { ids && list && <RowsOfTable ids={ids} list={list}/>}
         </tbody>
       </table>
     </div>

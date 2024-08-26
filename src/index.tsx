@@ -1,5 +1,4 @@
 import ReactDOM from 'react-dom';
-import React from 'react';
 import {configureStoreDev}  from './store/configureStore.dev';
 import { configureStore } from './store/configureStore.prod';
 import { Provider } from 'react-redux';

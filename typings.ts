@@ -2,6 +2,7 @@ import { API_REQUEST } from "./src/middleware/api";
 import { GET_FORKS_REQUEST, GET_FORKS_ERROR, GET_FORKS_SUCCESS } from "./src/types"; 
 
 export type Fork = {
+    id: string;
     'full_name': string;
     owner: {
         login: string
@@ -16,7 +17,7 @@ export type State = {
     isFetching: boolean;
     error: boolean;
     totalPages: number | null;
-    list: Array<Fork> | null;
+    list: Record<Fork['id'],  Fork> | null
     ids: string[]
 }
 

@@ -30,7 +30,7 @@ export const Paginate: React.FC<PaginateProps> = ({ history, location, match }) 
     history.push(`/seacrh&page=${prevPage}?repository=${currentRep}`);
   }, [currentPage, currentRep, history]);
 
-  if (ids.length !== 0 && totalPages === null) {
+  if (ids?.length !== 0 && totalPages === null) {
     return (
       <div className={styles.paginate}>
         <span className={styles.count}>
