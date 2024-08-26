@@ -16,15 +16,13 @@ const domNode = document.getElementById('root') as HTMLElement;
 const root = createRoot(domNode);
 
 root.render(
-  <React.StrictMode>
-    <Provider store={store}>
-      <BrowserRouter>
-        <div className="main-content">
-          <Route path="/" component={UserForm} />
-          <Route path="/:info" component={TableOfResults} />
-          <Route path="/:info" component={Paginate} />
-        </div>
-      </BrowserRouter>
-    </Provider>
-  </React.StrictMode>,
+  <Provider store={store}>
+    <BrowserRouter>
+      <div className="main-content">
+        <Route path="/" component={UserForm} />
+        <Route path="/:info" component={TableOfResults} />
+        <Route path="/:info" component={Paginate} />
+      </div>
+    </BrowserRouter>
+  </Provider>,
 );

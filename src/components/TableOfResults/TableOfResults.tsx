@@ -4,12 +4,7 @@ import { RowsOfTable } from './RowsOfTable/RowsOfTable';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchForks } from '../../actions/index';
-import {
-  selectIsFetchingState,
-  selectError,
-  selectIds,
-  selectList,
-} from '../../selectors';
+import { selectIsFetchingState, selectError, selectIds } from '../../selectors';
 import type { History, Location } from 'history';
 import type { match as Match } from 'react-router-dom';
 
@@ -34,8 +29,6 @@ export const TableOfResults: React.FC<TableOfResultsProps> = ({
   const error = useSelector(selectError);
 
   const ids = useSelector(selectIds);
-
-  const list = useSelector(selectList);
 
   useEffect(() => {
     dispatch(fetchForks(currentRep, currentPage));
@@ -69,7 +62,7 @@ export const TableOfResults: React.FC<TableOfResultsProps> = ({
             <th className={styles.caption}>Ссылка на репозиторий форка</th>
             <th className={styles.caption}>Кол-во звезд</th>
           </tr>
-          {ids && list && <RowsOfTable />}
+          {<RowsOfTable />}
         </tbody>
       </table>
     </div>

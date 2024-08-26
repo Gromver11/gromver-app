@@ -10,7 +10,6 @@
     "react-scripts": "5.0.1",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
-    "typescript": "^4.9.5",
     "ramda": "^0.26.1",
     "axios": "^1.7.5",
     "normalizr": "^3.4.1"
@@ -40,14 +39,13 @@
     "lint-staged": "^9.4.0",
     "prettier": "^2.1.2",
     "redux-devtools-extension": "^2.13.8",
-    "typescript": "^4.4.3"
+    "typescript": "^4.3.2",
+    "typescript-plugin-css-modules": "^5.1.0"
   },
   "lint-staged": {
     "*.{ts,tsx}": [
-      "npx tsc --noEmit",
       "prettier --write",
-      "eslint",
-      "git add"
+      "eslint"
     ]
   },
   "husky": {
@@ -62,8 +60,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "deploy": "gh-pages -d build",
-    "format": "prettier . --write"
+    "deploy": "gh-pages -d build"
   },
   "browserslist": {
     "production": [
