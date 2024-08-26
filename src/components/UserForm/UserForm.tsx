@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useForm } from 'react-hook-form';
 import styles from './UserForm.module.css';
 import type { History, Location } from 'history';
@@ -14,6 +14,7 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
   const {
     register,
     handleSubmit,
+    setValue,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -25,7 +26,9 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
   const onSubmit = (values: { userInput: string }) => {
     history.push(`/seacrh&page=1?repository=${values.userInput.toLowerCase()}`);
   };
-
+  useEffect(() => {
+    setValue('userInput', currentRep);
+  }, [currentRep]);
   return (
     <>
       <p className="greeting">
@@ -37,6 +40,7 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
           <input
             className={styles.input}
             {...register('userInput', {
+              value: currentRep,
               required: 'Обязательное поле',
               pattern: {
                 value: /^[/a-zA-z0-9]+$/,
