@@ -1,16 +1,23 @@
 import React from 'react';
 import styles from './TableOfResults.module.css';
-import RowsOfTable from './RowsOfTable/RowsOfTable';
+import { RowsOfTable } from './RowsOfTable/RowsOfTable';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchForks } from '../../actions/index';
-import {
-  selectIsFetchingState,
-  selectError,
-  selectIds,
-} from '../../selectors/index';
+import { selectIsFetchingState, selectError, selectIds } from '../../selectors';
+import type { History, Location } from 'history';
+import type { match as Match } from 'react-router-dom';
 
-const TableOfResults = ({ location, match }) => {
+type TableOfResultsProps = {
+  location: Location;
+  history: History;
+  match: Match<{ info: string }>;
+};
+
+export const TableOfResults: React.FC<TableOfResultsProps> = ({
+  location,
+  match,
+}) => {
   const currentRep = location.search.slice(12);
 
   const dispatch = useDispatch();
@@ -27,7 +34,7 @@ const TableOfResults = ({ location, match }) => {
     dispatch(fetchForks(currentRep, currentPage));
   }, [dispatch, currentRep, currentPage]);
 
-  if (ids.length === 0 && !isFetching && !error) {
+  if (ids?.length === 0 && !isFetching && !error) {
     return <div>Форков репозитория не найдено</div>;
   }
   if (isFetching) {
@@ -55,10 +62,9 @@ const TableOfResults = ({ location, match }) => {
             <th className={styles.caption}>Ссылка на репозиторий форка</th>
             <th className={styles.caption}>Кол-во звезд</th>
           </tr>
-          <RowsOfTable />
+          {<RowsOfTable />}
         </tbody>
       </table>
     </div>
   );
 };
-export default TableOfResults;
