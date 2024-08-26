@@ -3,7 +3,7 @@ import {
   GET_FORKS_REQUEST,
   GET_FORKS_SUCCESS,
 } from '../types/index';
-const initialState = {
+const initialState= {
   isFetching: false,
   error: false,
   list: null,

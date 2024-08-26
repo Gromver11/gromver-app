@@ -9,7 +9,7 @@ import {
 
 export const API_REQUEST = 'Api request';
 const BASE_URL = 'https://api.github.com/repos/';
-const user = new schema.Entity('recievedForks', { idAttribute: 'id' });
+const user = new schema.Entity('recievedForks',  undefined, { idAttribute: 'id' });
 const callApi = (endpoint, page) => {
   const fullUrl =
     endpoint.indexOf(BASE_URL) === -1

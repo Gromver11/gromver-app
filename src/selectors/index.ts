@@ -2,7 +2,7 @@ import { path } from 'ramda';
 
 export const selectTotalPages = path(['mainReducer', 'totalPages']);
 
-export const selectError = path(['mainReducer', 'error']);
+export const selectError = path<boolean>(['mainReducer', 'error']);
 
 export const selectIsFetchingState = path(['mainReducer', 'isFetching']);
 
