@@ -3,23 +3,64 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "axios": "^1.6.0",
-    "normalizr": "^3.4.1",
-    "ramda": "^0.26.1",
-    "react": "^16.9.0",
-    "react-dom": "^16.9.0",
     "react-hook-form": "^7.52.2",
+    "redux": "^4.0.4",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-scripts": "5.0.1",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
-    "react-scripts": "3.1.1",
-    "redux": "^4.0.4"
+    "ramda": "^0.26.1",
+    "axios": "^1.7.5",
+    "normalizr": "^3.4.1"
+  },
+  "homepage": "http://Gromver11.github.io/gromver-app",
+  "devDependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "@testing-library/jest-dom": "^5.17.0",
+    "@testing-library/react": "^13.4.0",
+    "@testing-library/user-event": "^13.5.0",
+    "@types/jest": "^27.5.2",
+    "@types/node": "^16.18.106",
+    "@types/ramda": "^0.26.1",
+    "@types/react": "^18.3.4",
+    "@types/react-dom": "^18.3.0",
+    "@types/react-redux": "^7.1.33",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/redux": "^3.6.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.4",
+    "gh-pages": "^2.1.1",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.4.0",
+    "prettier": "^2.1.2",
+    "redux-devtools-extension": "^2.13.8",
+    "typescript": "^4.3.2",
+    "typescript-plugin-css-modules": "^5.1.0"
+  },
+  "lint-staged": {
+    "*.{ts,tsx}": [
+      "prettier --write",
+      "eslint",
+      "git add"
+    ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "lint": "eslint . --ext .js,.jsx",
-    "lint:fix": "eslint . --ext .js,.jsx --fix",
+    "lint": "eslint . --ext .ts,.tsx",
+    "lint:fix": "eslint . --ext .ts,.tsx --fix",
     "deploy": "gh-pages -d build"
   },
   "browserslist": {
@@ -33,27 +74,5 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
-  },
-  "homepage": "http://Gromver11.github.io/gromver-app",
-  "devDependencies": {
-    "eslint-config-prettier": "^6.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "gh-pages": "^2.1.1",
-    "husky": "^3.0.4",
-    "lint-staged": "^9.4.0",
-    "prettier": "^1.18.2",
-    "redux-devtools-extension": "^2.13.8"
-  },
-  "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint",
-      "prettier --write",
-      "git add"
-    ]
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "lint-staged"
-    }
   }
 }

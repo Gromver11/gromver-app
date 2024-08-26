@@ -1,8 +1,21 @@
 import React, { useCallback } from 'react';
 import styles from './Paginate.module.css';
 import { useSelector } from 'react-redux';
-import { selectTotalPages, selectIds } from '../../selectors/index';
-const Paginate = ({ history, location, match }) => {
+import { selectTotalPages, selectIds } from '../../selectors';
+import type { History, Location } from 'history';
+import type { match as Match } from 'react-router-dom';
+
+type PaginateProps = {
+  location: Location;
+  history: History;
+  match: Match<{ info: string }>;
+};
+
+export const Paginate: React.FC<PaginateProps> = ({
+  history,
+  location,
+  match,
+}) => {
   const currentPage = Number(match.params.info.slice(12));
 
   const currentRep = location.search.slice(12);
@@ -20,7 +33,7 @@ const Paginate = ({ history, location, match }) => {
     history.push(`/seacrh&page=${prevPage}?repository=${currentRep}`);
   }, [currentPage, currentRep, history]);
 
-  if (ids.length !== 0 && totalPages === null) {
+  if (ids?.length !== 0 && totalPages === null) {
     return (
       <div className={styles.paginate}>
         <span className={styles.count}>
@@ -53,5 +66,3 @@ const Paginate = ({ history, location, match }) => {
     </div>
   ) : null;
 };
-
-export default Paginate;
