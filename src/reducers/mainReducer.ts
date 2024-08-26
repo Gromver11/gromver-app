@@ -1,20 +1,18 @@
-
 import {
   GET_FORKS_ERROR,
   GET_FORKS_REQUEST,
   GET_FORKS_SUCCESS,
 } from '../types';
-import type {State, Action} from '../../typings'
+import type { State, Action } from '../../typings';
 
-
-const initialState: State  = {
+const initialState: State = {
   isFetching: false,
   error: false,
   list: null,
   ids: [],
   totalPages: null,
 };
-export const mainReducer = (state = initialState, action: Action) => {
+export const mainReducer = (state = initialState, action: Action): State => {
   switch (action.type) {
     case GET_FORKS_REQUEST:
       return { ...state, isFetching: true };

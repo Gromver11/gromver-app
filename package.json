@@ -15,31 +15,36 @@
     "axios": "^1.7.5",
     "normalizr": "^3.4.1"
   },
-
   "homepage": "http://Gromver11.github.io/gromver-app",
   "devDependencies": {
-    "@types/react-router-dom": "^5.3.3",
-    "lint-staged": "^9.4.0",
-    "eslint-config-prettier": "^6.1.0",
-    "eslint-plugin-prettier": "^3.1.0",
-    "gh-pages": "^2.1.1",
-    "husky": "^3.0.4",
-    "prettier": "^1.18.2",
-    "redux-devtools-extension": "^2.13.8",
-    "@types/ramda": "^0.26.1",
-    "@types/react-redux": "^7.1.33",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
     "@types/jest": "^27.5.2",
     "@types/node": "^16.18.106",
+    "@types/ramda": "^0.26.1",
     "@types/react": "^18.3.4",
-    "@types/react-dom": "^18.3.0"
+    "@types/react-dom": "^18.3.0",
+    "@types/react-redux": "^7.1.33",
+    "@types/react-router-dom": "^5.3.3",
+    "@types/redux": "^3.6.0",
+    "@typescript-eslint/eslint-plugin": "^4.4.1",
+    "@typescript-eslint/parser": "^4.4.1",
+    "eslint": "^7.11.0",
+    "eslint-config-prettier": "^6.12.0",
+    "eslint-plugin-prettier": "^3.1.4",
+    "eslint-plugin-react": "^7.21.4",
+    "gh-pages": "^2.1.1",
+    "husky": "^3.0.4",
+    "lint-staged": "^9.4.0",
+    "prettier": "^2.1.2",
+    "redux-devtools-extension": "^2.13.8",
+    "typescript": "^4.4.3"
   },
   "lint-staged": {
-    "*.{js,jsx}": [
-      "eslint",
+    "*.{ts,tsx}": [
       "prettier --write",
+      "eslint",
       "git add"
     ]
   },
@@ -55,7 +60,8 @@
     "eject": "react-scripts eject",
     "lint": "eslint . --ext .ts,.tsx",
     "lint:fix": "eslint . --ext .ts,.tsx --fix",
-    "deploy": "gh-pages -d build"
+    "deploy": "gh-pages -d build",
+    "format": "prettier . --write"
   },
   "browserslist": {
     "production": [

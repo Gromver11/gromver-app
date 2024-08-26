@@ -2,17 +2,20 @@ import React, { useCallback } from 'react';
 import styles from './Paginate.module.css';
 import { useSelector } from 'react-redux';
 import { selectTotalPages, selectIds } from '../../selectors';
-import type {History, Location}  from 'history'
-import type { match as Match } from "react-router-dom";
-
+import type { History, Location } from 'history';
+import type { match as Match } from 'react-router-dom';
 
 type PaginateProps = {
-  location: Location,
-  history: History,
-  match : Match<{info: string}>
-}
+  location: Location;
+  history: History;
+  match: Match<{ info: string }>;
+};
 
-export const Paginate: React.FC<PaginateProps> = ({ history, location, match }) => {
+export const Paginate: React.FC<PaginateProps> = ({
+  history,
+  location,
+  match,
+}) => {
   const currentPage = Number(match.params.info.slice(12));
 
   const currentRep = location.search.slice(12);
