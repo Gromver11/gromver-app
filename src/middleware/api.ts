@@ -1,4 +1,5 @@
-import axios from 'axios';
+import axios, {type AxiosResponse} from 'axios'
+import  type { Middleware, AnyAction } from 'redux'
 import { normalize, schema } from 'normalizr';
 import { omit } from 'ramda';
 import {
@@ -6,25 +7,27 @@ import {
   GET_FORKS_REQUEST,
   GET_FORKS_SUCCESS,
 } from '../types';
+import { Action, ActionWithData, CommonAction, State } from '../../typings';
+
+
+const isAnyAction = (action: AnyAction | CommonAction): action is AnyAction => {
+  return !action[API_REQUEST]
+}
 
 export const API_REQUEST = 'Api request';
 const BASE_URL = 'https://api.github.com/repos/';
 const user = new schema.Entity('recievedForks',  undefined, { idAttribute: 'id' });
-const callApi = (endpoint:string, page: number) => {
+const callApi = (endpoint:string, page: string) => {
   const fullUrl =
     endpoint.indexOf(BASE_URL) === -1
       ? BASE_URL + endpoint + `/forks?page=${page}&per_page=20`
       : endpoint + `/forks?page=${page}&per_page=20`;
   return axios.get(fullUrl);
 };
-const getPagesCount = (response: Response) => {
-  const link = response.headers.link;
-  if (!link) {
-    return null;
-  }
-  const links = link.split(',');
-  const lastPage = links.find(s => s.indexOf('rel="last"') > -1);
-  const prevPage = links.find(s => s.indexOf('rel="prev"') > -1);
+const getPagesCount = (response:AxiosResponse): State['totalPages'] => {
+  const links: string[] | undefined =  response.headers.link?.split(',');
+  const lastPage = links?.find(link => link.indexOf('rel="last"') > -1);
+  const prevPage = links?.find(link => link.indexOf('rel="prev"') > -1);
   if (lastPage) {
     return Number(
       lastPage
@@ -43,13 +46,14 @@ const getPagesCount = (response: Response) => {
       ) + 1
     );
   }
+  return null
 };
-const api = store => next => action => {
-  if (!action[API_REQUEST]) {
+const api:Middleware<{}, State> = _ => next => (action: AnyAction | CommonAction )=> {
+  if (isAnyAction(action)) {
     return next(action);
   }
-  const actionWith = data => {
-    const newAction = Object.assign({}, action, data);
+  const actionWith = (data: ActionWithData): Action => {
+    const newAction: AnyAction & ActionWithData | CommonAction & ActionWithData = Object.assign({}, action, data);
     return omit([API_REQUEST], newAction);
   };
   next(actionWith({ type: GET_FORKS_REQUEST }));

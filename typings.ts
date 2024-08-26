@@ -1,3 +1,4 @@
+import { API_REQUEST } from "./src/middleware/api";
 import { GET_FORKS_REQUEST, GET_FORKS_ERROR, GET_FORKS_SUCCESS } from "./src/types"; 
 
 export type Fork = {
@@ -35,7 +36,7 @@ export type ActionSuccess = {
     type: typeof GET_FORKS_SUCCESS,
     payload:  {
         result: string[];
-        totalPages: number;
+        totalPages: number | null
         forks: {
         entities: {
             recievedForks: Fork[]
@@ -46,3 +47,17 @@ export type ActionSuccess = {
 
 
 export type Action = ActionLoading |  ActionError | ActionSuccess
+
+
+export type ActionWithData = {
+    type: typeof GET_FORKS_REQUEST | typeof GET_FORKS_ERROR | typeof GET_FORKS_SUCCESS
+    payload?: ActionError['payload'] | ActionSuccess['payload']
+}
+
+
+export type CommonAction =  {
+    [API_REQUEST]: {
+        currentRep: string;
+        currentPage: string
+      }
+}
