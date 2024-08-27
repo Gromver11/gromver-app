@@ -1,15 +1,14 @@
 
 .userForm {
     font: 14px/1.4 "Helvetica Neue", Helvetica, Arial, sans-serif;
-    margin-bottom: 50px;
 }
 
 
 
 .error {
     color: red;
+    width: 445px;
     position: absolute;
-    bottom: -40px;
 
 }
 

@@ -30,6 +30,9 @@ export const mainReducer = (state = initialState, action: Action): State => {
         ...state,
         isError: true,
         isLoading: false,
+        ids: [],
+        forks: null,
+        totalPages: null,
       };
     default:
       return state;

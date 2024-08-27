@@ -6,6 +6,7 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material/TextField';
 import SearchIcon from '@mui/icons-material/Search';
 import Stack from '@mui/material/Stack';
+import Alert from '@mui/material/Alert';
 
 type UserFormProps = {
   location: Location;
@@ -68,7 +69,9 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
               )}
             />
             {!!errors.userInput && (
-              <div className={styles.error}>{errors.userInput.message}</div>
+              <div className={styles.error}>
+                <Alert severity="error">{errors.userInput.message}</Alert>
+              </div>
             )}
           </div>
           <Button
