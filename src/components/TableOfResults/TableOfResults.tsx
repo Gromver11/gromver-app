@@ -4,7 +4,11 @@ import { RowsOfTable } from './RowsOfTable/RowsOfTable';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchForks } from '../../actions/index';
-import { selectIsFetchingState, selectError, selectIds } from '../../selectors';
+import {
+  selectIsErrorState,
+  selectIsLoadingState,
+  selectIds,
+} from '../../utils';
 import type { History, Location } from 'history';
 import type { match as Match } from 'react-router-dom';
 
@@ -18,33 +22,33 @@ export const TableOfResults: React.FC<TableOfResultsProps> = ({
   location,
   match,
 }) => {
-  const currentRep = location.search.slice(12);
+  const currentRepository = location.search.slice(12);
 
   const dispatch = useDispatch();
 
   const currentPage = Number(match.params.info.slice(12));
 
-  const isFetching = useSelector(selectIsFetchingState);
+  const isLoading = useSelector(selectIsLoadingState);
 
-  const error = useSelector(selectError);
+  const isError = useSelector(selectIsErrorState);
 
   const ids = useSelector(selectIds);
 
   useEffect(() => {
-    dispatch(fetchForks(currentRep, currentPage));
-  }, [dispatch, currentRep, currentPage]);
+    dispatch(fetchForks(currentRepository, currentPage));
+  }, [dispatch, currentRepository, currentPage]);
 
-  if (ids?.length === 0 && !isFetching && !error) {
+  if (ids?.length === 0 && !isLoading && !isError) {
     return <div>Форков репозитория не найдено</div>;
   }
-  if (isFetching) {
+  if (isLoading) {
     return (
       <div className={styles.wrap}>
         <div>loading...</div>
       </div>
     );
   }
-  if (error) {
+  if (isError) {
     return (
       <div className={styles.wrap}>
         <div>Данного репозитория не существует</div>

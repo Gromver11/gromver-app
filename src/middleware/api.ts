@@ -31,8 +31,8 @@ export const api: Middleware<unknown, State> =
       return omit([API_REQUEST], newAction);
     };
     next(actionWith({ type: GET_FORKS_REQUEST }));
-    const { currentRep, currentPage } = action[API_REQUEST];
-    return callApi(currentRep, currentPage)
+    const { currentRepository, currentPage } = action[API_REQUEST];
+    return callApi(currentRepository, currentPage)
       .then((res) =>
         next(
           actionWith({

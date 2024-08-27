@@ -16,10 +16,10 @@ export type Fork = {
 };
 
 export type State = {
-  isFetching: boolean;
-  error: boolean;
+  isLoading: boolean;
+  isError: boolean;
   totalPages: number | null;
-  list: Record<string, Fork> | null;
+  forks: Record<string, Fork> | null;
   ids: string[];
 };
 
@@ -57,7 +57,7 @@ export type ActionWithData = {
 
 export type CommonAction = {
   [API_REQUEST]: {
-    currentRep: string;
+    currentRepository: string;
     currentPage: string;
   };
 };

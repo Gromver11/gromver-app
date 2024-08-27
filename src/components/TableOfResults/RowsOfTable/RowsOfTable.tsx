@@ -1,22 +1,22 @@
 import React from 'react';
 import styles from './RowsOfTable.module.css';
 import { useSelector } from 'react-redux';
-import { selectIds, selectList } from '../../../selectors';
+import { selectIds, selectForks } from '../../../utils';
 
 export const RowsOfTable: React.FC = () => {
   const ids = useSelector(selectIds);
-  const list = useSelector(selectList);
+  const forks = useSelector(selectForks);
 
   return (
     <>
-      {ids && list
+      {ids && forks
         ? ids.map((id) => {
             return (
               <tr key={id}>
-                <td className={styles.cell}>{list[id]['full_name']}</td>
-                <td className={styles.cell}>{list[id].owner.login}</td>
-                <td className={styles.cell}>{list[id]['html_url']}</td>
-                <td className={styles.cell}>{list[id]['stargazers_count']}</td>
+                <td className={styles.cell}>{forks[id]['full_name']}</td>
+                <td className={styles.cell}>{forks[id].owner.login}</td>
+                <td className={styles.cell}>{forks[id]['html_url']}</td>
+                <td className={styles.cell}>{forks[id]['stargazers_count']}</td>
               </tr>
             );
           })

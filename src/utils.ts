@@ -1,7 +1,8 @@
-import { AnyAction } from 'redux';
+import type { AnyAction } from 'redux';
 import { API_REQUEST, BASE_URL } from './constants';
 import type { CommonAction, Fork, State } from '../typings';
 import axios, { type AxiosResponse } from 'axios';
+import { path } from 'ramda';
 
 export const isAnyAction = (
   action: AnyAction | CommonAction,
@@ -32,3 +33,22 @@ export const callApi = (
       : endpoint + `/forks?page=${page}&per_page=20`;
   return axios.get(fullUrl);
 };
+
+export const selectTotalPages = path<State['totalPages']>([
+  'mainReducer',
+  'totalPages',
+]);
+
+export const selectIsErrorState = path<State['isError']>([
+  'mainReducer',
+  'isError',
+]);
+
+export const selectIsLoadingState = path<State['isLoading']>([
+  'mainReducer',
+  'isLoading',
+]);
+
+export const selectIds = path<State['ids']>(['mainReducer', 'ids']);
+
+export const selectForks = path<State['forks']>(['mainReducer', 'forks']);
