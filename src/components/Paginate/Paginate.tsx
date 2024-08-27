@@ -46,7 +46,11 @@ export const Paginate: React.FC<PaginateProps> = ({
   return totalPages !== null ? (
     <div className={styles.paginate}>
       {currentPage !== 1 && (
-        <Button onClick={handleLoadPrevPageClick} color="secondary">
+        <Button
+          onClick={handleLoadPrevPageClick}
+          variant="contained"
+          color="primary"
+        >
           {'<<'}
         </Button>
       )}
@@ -54,7 +58,11 @@ export const Paginate: React.FC<PaginateProps> = ({
         {currentPage} of {totalPages}
       </span>
       {currentPage !== totalPages && (
-        <Button color="secondary" onClick={handleLoadNextPageClick}>
+        <Button
+          color="primary"
+          variant="contained"
+          onClick={handleLoadNextPageClick}
+        >
           {'>>'}
         </Button>
       )}
