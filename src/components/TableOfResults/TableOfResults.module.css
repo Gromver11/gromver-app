@@ -5,8 +5,7 @@
     border-spacing: 5px;
     background: #ECE9E0;
     color: #656665;
-    border: 16px solid #ECE9E0;
-    border-radius: 20px;
+ 
 
 }
 
@@ -16,8 +15,12 @@
     font-size: 18px;
 }
 
-.wrap {
+.tableWrap {
     padding-top: 50px;
-    height: 750px;
     margin-bottom: 20px;
+}
+
+
+.wrap {
+    padding-top: 200px;
 }

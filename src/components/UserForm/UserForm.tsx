@@ -40,10 +40,10 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
   };
   return (
     <>
-      <p className="greeting">
+      <Alert className="greeting" variant="outlined" severity="info">
         Введите имя пользователя и название репозитория для поиска (Формат
         запроса: Owner/RepoName)
-      </p>
+      </Alert>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.userForm}>
         <Stack direction="row">
           <div className={styles.input}>
@@ -60,6 +60,7 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
               control={control}
               render={({ field: { onChange, onBlur, value } }) => (
                 <TextField
+                  placeholder="reduxjs/redux"
                   error={!!errors.userInput}
                   onChange={onChange}
                   onBlur={onBlur}

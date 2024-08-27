@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux';
 import { selectTotalPages, selectIds } from '../../utils';
 import type { History, Location } from 'history';
 import type { match as Match } from 'react-router-dom';
+import Button from '@mui/material/Button';
 
 type PaginateProps = {
   location: Location;
@@ -45,23 +46,17 @@ export const Paginate: React.FC<PaginateProps> = ({
   return totalPages !== null ? (
     <div className={styles.paginate}>
       {currentPage !== 1 && (
-        <button
-          className={`${styles.btn} btn`}
-          onClick={handleLoadPrevPageClick}
-        >
+        <Button onClick={handleLoadPrevPageClick} color="secondary">
           {'<<'}
-        </button>
+        </Button>
       )}
       <span className={styles.count}>
         {currentPage} of {totalPages}
       </span>
       {currentPage !== totalPages && (
-        <button
-          className={`${styles.btn} btn`}
-          onClick={handleLoadNextPageClick}
-        >
+        <Button color="secondary" onClick={handleLoadNextPageClick}>
           {'>>'}
-        </button>
+        </Button>
       )}
     </div>
   ) : null;

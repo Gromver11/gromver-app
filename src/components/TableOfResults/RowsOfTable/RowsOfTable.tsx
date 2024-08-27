@@ -1,5 +1,4 @@
 import React from 'react';
-import styles from './RowsOfTable.module.css';
 import { useSelector } from 'react-redux';
 import { selectIds, selectForks } from '../../../utils';
 import TableBody from '@mui/material/TableBody';
@@ -16,9 +15,7 @@ export const RowsOfTable: React.FC = () => {
         ? ids.map((id) => {
             return (
               <TableRow key={id}>
-                <TableCell className={styles.cell}>
-                  {forks[id]['full_name']}
-                </TableCell>
+                <TableCell>{forks[id]['full_name']}</TableCell>
                 <TableCell>{forks[id].owner.login}</TableCell>
                 <TableCell>{forks[id]['html_url']}</TableCell>
                 <TableCell>{forks[id]['stargazers_count']}</TableCell>

@@ -49,7 +49,9 @@ export const TableOfResults: React.FC<TableOfResultsProps> = ({
   if (ids?.length === 0 && !isLoading && !isError) {
     return (
       <div className={styles.wrap}>
-        <Alert severity="warning">Форков данного репозитория не найдено</Alert>
+        <Alert variant="filled" severity="warning">
+          Форков данного репозитория не найдено
+        </Alert>
       </div>
     );
   }
@@ -63,21 +65,27 @@ export const TableOfResults: React.FC<TableOfResultsProps> = ({
   if (isError) {
     return (
       <div className={styles.wrap}>
-        <Alert severity="error">Не удалось получить список результатов</Alert>
+        <Alert variant="filled" severity="error">
+          Не удалось получить список результатов
+        </Alert>
       </div>
     );
   }
 
   return (
-    <div className={styles.wrap}>
+    <div className={styles.tableWrap}>
       <TableContainer component={Paper}>
-        <Table sx={{ minWidth: 650 }} aria-label="simple table">
+        <Table className={styles.table} size="small" aria-label="simple table">
           <TableHead>
             <TableRow>
-              <TableCell>Полное название репозитория</TableCell>
-              <TableCell>Владелец</TableCell>
-              <TableCell>Ссылка на репозиторий форка</TableCell>
-              <TableCell>Кол-во звезд</TableCell>
+              <TableCell className={styles.caption}>
+                Полное название репозитория
+              </TableCell>
+              <TableCell className={styles.caption}>Владелец</TableCell>
+              <TableCell className={styles.caption}>
+                Ссылка на репозиторий форка
+              </TableCell>
+              <TableCell className={styles.caption}>Кол-во звезд</TableCell>
             </TableRow>
           </TableHead>
           <RowsOfTable />
