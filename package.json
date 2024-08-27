@@ -3,16 +3,21 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
-    "react-hook-form": "^7.52.2",
-    "redux": "^4.0.4",
+    "@emotion/react": "^11.13.3",
+    "@emotion/styled": "^11.13.0",
+    "@mui/icons-material": "^5.16.7",
+    "@mui/material": "^5.16.7",
+    "axios": "^1.7.5",
+    "normalizr": "^3.4.1",
+    "ramda": "^0.26.1",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-scripts": "5.0.1",
+    "react-hook-form": "^7.52.2",
+    "react-hook-form-mui": "^7.0.1",
     "react-redux": "^7.1.1",
     "react-router-dom": "^5.0.1",
-    "ramda": "^0.26.1",
-    "axios": "^1.7.5",
-    "normalizr": "^3.4.1"
+    "react-scripts": "5.0.1",
+    "redux": "^4.0.4"
   },
   "homepage": "http://Gromver11.github.io/gromver-app",
   "devDependencies": {

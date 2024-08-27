@@ -18,6 +18,8 @@
 
 .paginate {
     display: flex;
+    position: absolute;
+    bottom: 10px;
     justify-content: center;
     max-width: 963px;
     align-items: center
