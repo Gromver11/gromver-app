@@ -23,12 +23,13 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
     mode: 'onBlur',
   });
 
-  const onSubmit = (values: { userInput: string }) => {
-    history.push(`/seacrh&page=1?repository=${values.userInput.toLowerCase()}`);
-  };
   useEffect(() => {
     setValue('userInput', currentRep);
   }, [currentRep]);
+
+  const onSubmit = (values: { userInput: string }) => {
+    history.push(`/seacrh&page=1?repository=${values.userInput.toLowerCase()}`);
+  };
   return (
     <>
       <p className="greeting">
@@ -40,7 +41,6 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
           <input
             className={styles.input}
             {...register('userInput', {
-              value: currentRep,
               required: 'Обязательное поле',
               pattern: {
                 value: /^[/a-zA-z0-9]+$/,

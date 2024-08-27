@@ -1,7 +1,7 @@
-import React, { useCallback } from 'react';
+import React from 'react';
 import styles from './Paginate.module.css';
 import { useSelector } from 'react-redux';
-import { selectTotalPages, selectIds } from '../../selectors';
+import { selectTotalPages, selectIds } from '../../utils';
 import type { History, Location } from 'history';
 import type { match as Match } from 'react-router-dom';
 
@@ -18,20 +18,20 @@ export const Paginate: React.FC<PaginateProps> = ({
 }) => {
   const currentPage = Number(match.params.info.slice(12));
 
-  const currentRep = location.search.slice(12);
+  const currentRepository = location.search.slice(12);
 
   const totalPages = useSelector(selectTotalPages);
 
   const ids = useSelector(selectIds);
 
-  const handleLoadNextPageClick = useCallback(() => {
+  const handleLoadNextPageClick = () => {
     const nextPage = currentPage + 1;
-    history.push(`/seacrh&page=${nextPage}?repository=${currentRep}`);
-  }, [currentPage, currentRep, history]);
-  const handleLoadPrevPageClick = useCallback(() => {
+    history.push(`/seacrh&page=${nextPage}?repository=${currentRepository}`);
+  };
+  const handleLoadPrevPageClick = () => {
     const prevPage = currentPage - 1;
-    history.push(`/seacrh&page=${prevPage}?repository=${currentRep}`);
-  }, [currentPage, currentRep, history]);
+    history.push(`/seacrh&page=${prevPage}?repository=${currentRepository}`);
+  };
 
   if (ids?.length !== 0 && totalPages === null) {
     return (

@@ -1,9 +1,9 @@
-import { API_REQUEST } from './src/middleware/api';
+import { API_REQUEST } from './src/constants';
 import {
   GET_FORKS_REQUEST,
   GET_FORKS_ERROR,
   GET_FORKS_SUCCESS,
-} from './src/types';
+} from './src/constants';
 
 export type Fork = {
   id: string;
@@ -16,10 +16,10 @@ export type Fork = {
 };
 
 export type State = {
-  isFetching: boolean;
-  error: boolean;
+  isLoading: boolean;
+  isError: boolean;
   totalPages: number | null;
-  list: Record<string, Fork> | null;
+  forks: Record<string, Fork> | null;
   ids: string[];
 };
 
@@ -57,7 +57,7 @@ export type ActionWithData = {
 
 export type CommonAction = {
   [API_REQUEST]: {
-    currentRep: string;
+    currentRepository: string;
     currentPage: string;
   };
 };

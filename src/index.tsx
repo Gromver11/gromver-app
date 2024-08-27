@@ -1,7 +1,7 @@
 import { configureStoreDev } from './store/configureStore.dev';
 import { configureStore } from './store/configureStore.prod';
 import { Provider } from 'react-redux';
-import { Route, BrowserRouter } from 'react-router-dom';
+import { Route, HashRouter } from 'react-router-dom';
 import './index.css';
 import React from 'react';
 import { TableOfResults, UserForm, Paginate } from './components';
@@ -17,12 +17,12 @@ const root = createRoot(domNode);
 
 root.render(
   <Provider store={store}>
-    <BrowserRouter>
+    <HashRouter>
       <div className="main-content">
         <Route path="/" component={UserForm} />
         <Route path="/:info" component={TableOfResults} />
         <Route path="/:info" component={Paginate} />
       </div>
-    </BrowserRouter>
+    </HashRouter>
   </Provider>,
 );
