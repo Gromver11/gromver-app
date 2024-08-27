@@ -20,4 +20,6 @@ jobs:
     - name: Build page
       run: yarn run build
     - name: Deploy to gh-pages
-      run: yarn deploy 
+      run: | 
+        git config user.name "Ivan Shirobokov" && git config user.email spirit-1993@list.ru
+        yarn deploy
