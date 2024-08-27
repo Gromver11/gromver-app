@@ -21,5 +21,5 @@ jobs:
       run: yarn run build
     - name: Deploy to gh-pages
       run: | 
-        git config user.name "Ivan Shirobokov" && git config user.email spirit-1993@list.ru
+        git config user.name "Ivan Shirobokov" && git config user.email "spirit-1993@list.ru"
         yarn deploy
