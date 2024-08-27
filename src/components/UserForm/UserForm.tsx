@@ -1,7 +1,11 @@
 import React, { useEffect } from 'react';
-import { useForm } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import styles from './UserForm.module.css';
 import type { History, Location } from 'history';
+import Button from '@mui/material/Button';
+import TextField from '@mui/material/TextField';
+import SearchIcon from '@mui/icons-material/Search';
+import Stack from '@mui/material/Stack';
 
 type UserFormProps = {
   location: Location;
@@ -12,9 +16,9 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
   const currentRep = location.search.slice(12);
 
   const {
-    register,
     handleSubmit,
     setValue,
+    control,
     formState: { errors },
   } = useForm({
     defaultValues: {
@@ -28,7 +32,10 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
   }, [currentRep]);
 
   const onSubmit = (values: { userInput: string }) => {
-    history.push(`/seacrh&page=1?repository=${values.userInput.toLowerCase()}`);
+    if (errors.userInput) return;
+    return history.push(
+      `/seacrh&page=1?repository=${values.userInput.toLowerCase()}`,
+    );
   };
   return (
     <>
@@ -37,28 +44,43 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
         запроса: Owner/RepoName)
       </p>
       <form onSubmit={handleSubmit(onSubmit)} className={styles.userForm}>
-        <div className={styles.wrapper}>
-          <input
-            className={styles.input}
-            {...register('userInput', {
-              required: 'Обязательное поле',
-              pattern: {
-                value: /^[/a-zA-z0-9]+$/,
-                message: "Разрешены только цифры, латинские буквы и символ '/'",
-              },
-            })}
-          />
-          {!!errors.userInput && (
-            <div className={styles.error}>{errors.userInput.message}</div>
-          )}
-        </div>
-        <button
-          type="submit"
-          className={`${styles.btn} btn`}
-          disabled={!!errors.userInput}
-        >
-          Искать
-        </button>
+        <Stack direction="row">
+          <div className={styles.input}>
+            <Controller
+              name="userInput"
+              rules={{
+                required: 'Обязательное поле',
+                pattern: {
+                  value: /^[/a-zA-z0-9]+$/,
+                  message:
+                    "Разрешены только цифры, латинские буквы и символ '/'",
+                },
+              }}
+              control={control}
+              render={({ field: { onChange, onBlur, value } }) => (
+                <TextField
+                  error={!!errors.userInput}
+                  onChange={onChange}
+                  onBlur={onBlur}
+                  value={value}
+                  size="small"
+                />
+              )}
+            />
+            {!!errors.userInput && (
+              <div className={styles.error}>{errors.userInput.message}</div>
+            )}
+          </div>
+          <Button
+            endIcon={<SearchIcon />}
+            variant="contained"
+            type="submit"
+            size="small"
+            color={errors.userInput ? 'error' : 'success'}
+          >
+            Искать
+          </Button>
+        </Stack>
       </form>
     </>
   );
