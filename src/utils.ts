@@ -1,6 +1,6 @@
 import type { AnyAction } from 'redux';
 import { API_REQUEST, BASE_URL } from './constants';
-import type { CommonAction, Fork, State } from '../typings';
+import type { CommonAction, Fork, State } from './typings';
 import axios, { type AxiosResponse } from 'axios';
 import { path } from 'ramda';
 

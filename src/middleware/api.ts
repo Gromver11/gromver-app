@@ -7,12 +7,7 @@ import {
   GET_FORKS_SUCCESS,
   API_REQUEST,
 } from '../constants';
-import type {
-  Action,
-  ActionWithData,
-  CommonAction,
-  State,
-} from '../../typings';
+import type { Action, ActionWithData, CommonAction, State } from '../typings';
 import { callApi, getPagesCount, isAnyAction } from '../utils';
 
 const user = new schema.Entity('recievedForks', undefined, {

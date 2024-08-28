@@ -3,7 +3,7 @@ import {
   GET_FORKS_REQUEST,
   GET_FORKS_SUCCESS,
 } from '../constants';
-import type { State, Action } from '../../typings';
+import type { State, Action } from '../typings';
 
 const initialState: State = {
   isLoading: false,

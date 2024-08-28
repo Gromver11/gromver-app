@@ -1,9 +1,9 @@
-import { API_REQUEST } from './src/constants';
+import { API_REQUEST } from './constants';
 import {
   GET_FORKS_REQUEST,
   GET_FORKS_ERROR,
   GET_FORKS_SUCCESS,
-} from './src/constants';
+} from './constants';
 
 export type Fork = {
   id: string;

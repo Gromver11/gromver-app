@@ -1,4 +1,4 @@
-import { CommonAction } from '../../typings';
+import { CommonAction } from './../typings';
 import { API_REQUEST } from '../constants';
 
 export const fetchForks = (url: string, page = 1): CommonAction => {
