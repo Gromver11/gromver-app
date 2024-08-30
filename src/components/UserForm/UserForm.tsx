@@ -35,7 +35,7 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
   const onSubmit = (values: { userInput: string }) => {
     if (errors.userInput) return;
     return history.push(
-      `/seacrh&page=1?repository=${values.userInput.toLowerCase()}`,
+      `/search&page=1?repository=${values.userInput.toLowerCase()}`,
     );
   };
   return (
