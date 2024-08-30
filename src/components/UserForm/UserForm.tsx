@@ -69,7 +69,7 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
                 />
               )}
             />
-            {!!errors.userInput && (
+            {!!errors.userInput?.message && (
               <div className={styles.error}>
                 <Alert severity="error">{errors.userInput.message}</Alert>
               </div>
