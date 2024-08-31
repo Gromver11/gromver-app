@@ -3,6 +3,11 @@
     "env": {
         "browser": true
     },
+    "settings": {
+        "react": {
+            "version": "detect"
+        }
+    },
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "ecmaFeatures": {
@@ -12,15 +17,18 @@
         "sourceType": "module",
         "project": "./tsconfig.json"
     },
+    "rules": {
+        "prettier/prettier": ["error", {}, {"usePrettierrc": true }]
+},
     "plugins": [
         "react",
         "@typescript-eslint",
         "prettier"
     ],
     "extends": [
-        "eslint:recommended",
-        "plugin:react/recommended",
+        "react-app",
         "plugin:prettier/recommended",
+        "eslint:recommended",
         "plugin:@typescript-eslint/eslint-recommended",
         "plugin:@typescript-eslint/recommended"
     ]

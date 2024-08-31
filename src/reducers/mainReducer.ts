@@ -2,8 +2,8 @@ import {
   GET_FORKS_ERROR,
   GET_FORKS_REQUEST,
   GET_FORKS_SUCCESS,
-} from '../constants';
-import type { State, Action } from '../typings';
+} from "../constants";
+import type { State, Action } from "../typings";
 
 const initialState: State = {
   isLoading: false,

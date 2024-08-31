@@ -1,9 +1,9 @@
-import { API_REQUEST } from './constants';
+import { API_REQUEST } from "./constants";
 import {
   GET_FORKS_REQUEST,
   GET_FORKS_ERROR,
   GET_FORKS_SUCCESS,
-} from './constants';
+} from "./constants";
 
 export type Fork = {
   id: string;
@@ -52,7 +52,7 @@ export type ActionWithData = {
     | typeof GET_FORKS_REQUEST
     | typeof GET_FORKS_ERROR
     | typeof GET_FORKS_SUCCESS;
-  payload?: ActionError['payload'] | ActionSuccess['payload'];
+  payload?: ActionError["payload"] | ActionSuccess["payload"];
 };
 
 export type CommonAction = {

@@ -9,8 +9,8 @@ import Stack from "@mui/material/Stack";
 import Alert from "@mui/material/Alert";
 
 type UserFormProps = {
-  location: Location,
-  history: History,
+  location: Location;
+  history: History;
 };
 
 export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
@@ -30,7 +30,7 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
 
   useEffect(() => {
     setValue("userInput", currentRep);
-  }, [currentRep]);
+  }, [currentRep, setValue]);
 
   const onSubmit = (values: { userInput: string }) => {
     if (errors.userInput) return;

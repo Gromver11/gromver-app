@@ -21,9 +21,9 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 
 type TableOfResultsProps = {
-  location: Location,
-  history: History,
-  match: Match<{ info: string }>,
+  location: Location;
+  history: History;
+  match: Match<{ info: string }>;
 };
 
 export const TableOfResults: React.FC<TableOfResultsProps> = ({

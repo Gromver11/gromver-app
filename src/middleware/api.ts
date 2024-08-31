@@ -1,17 +1,17 @@
-import type { Middleware, AnyAction } from 'redux';
-import { normalize, schema } from 'normalizr';
-import { omit } from 'ramda';
+import type { Middleware, AnyAction } from "redux";
+import { normalize, schema } from "normalizr";
+import { omit } from "ramda";
 import {
   GET_FORKS_ERROR,
   GET_FORKS_REQUEST,
   GET_FORKS_SUCCESS,
   API_REQUEST,
-} from '../constants';
-import type { Action, ActionWithData, CommonAction, State } from '../typings';
-import { callApi, getPagesCount, isAnyAction } from '../utils';
+} from "../constants";
+import type { Action, ActionWithData, CommonAction, State } from "../typings";
+import { callApi, getPagesCount, isAnyAction } from "../utils";
 
-const user = new schema.Entity('recievedForks', undefined, {
-  idAttribute: 'id',
+const user = new schema.Entity("recievedForks", undefined, {
+  idAttribute: "id",
 });
 
 export const api: Middleware<unknown, State> =

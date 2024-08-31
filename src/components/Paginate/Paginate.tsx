@@ -1,10 +1,10 @@
-import React from 'react';
-import styles from './Paginate.module.css';
-import { useSelector } from 'react-redux';
-import { selectTotalPages, selectIds } from '../../utils';
-import type { History, Location } from 'history';
-import type { match as Match } from 'react-router-dom';
-import Button from '@mui/material/Button';
+import React from "react";
+import styles from "./Paginate.module.css";
+import { useSelector } from "react-redux";
+import { selectTotalPages, selectIds } from "../../utils";
+import type { History, Location } from "history";
+import type { match as Match } from "react-router-dom";
+import Button from "@mui/material/Button";
 
 type PaginateProps = {
   location: Location;
@@ -51,7 +51,7 @@ export const Paginate: React.FC<PaginateProps> = ({
           variant="contained"
           color="primary"
         >
-          {'<<'}
+          {"<<"}
         </Button>
       )}
       <span className={styles.count}>
@@ -63,7 +63,7 @@ export const Paginate: React.FC<PaginateProps> = ({
           variant="contained"
           onClick={handleLoadNextPageClick}
         >
-          {'>>'}
+          {">>"}
         </Button>
       )}
     </div>
