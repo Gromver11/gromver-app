@@ -1,29 +1,29 @@
-import React from 'react';
-import styles from './TableOfResults.module.css';
-import { RowsOfTable } from './RowsOfTable/RowsOfTable';
-import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { fetchForks } from '../../actions/index';
+import React from "react";
+import styles from "./TableOfResults.module.css";
+import { RowsOfTable } from "./RowsOfTable/RowsOfTable";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import { fetchForks } from "../../actions/index";
 import {
   selectIsErrorState,
   selectIsLoadingState,
   selectIds,
-} from '../../utils';
-import type { History, Location } from 'history';
-import type { match as Match } from 'react-router-dom';
-import Alert from '@mui/material/Alert';
-import CircularProgress from '@mui/material/CircularProgress';
-import Table from '@mui/material/Table';
-import TableCell from '@mui/material/TableCell';
-import TableContainer from '@mui/material/TableContainer';
-import TableHead from '@mui/material/TableHead';
-import TableRow from '@mui/material/TableRow';
-import Paper from '@mui/material/Paper';
+} from "../../utils";
+import type { History, Location } from "history";
+import type { match as Match } from "react-router-dom";
+import Alert from "@mui/material/Alert";
+import CircularProgress from "@mui/material/CircularProgress";
+import Table from "@mui/material/Table";
+import TableCell from "@mui/material/TableCell";
+import TableContainer from "@mui/material/TableContainer";
+import TableHead from "@mui/material/TableHead";
+import TableRow from "@mui/material/TableRow";
+import Paper from "@mui/material/Paper";
 
 type TableOfResultsProps = {
-  location: Location;
-  history: History;
-  match: Match<{ info: string }>;
+  location: Location,
+  history: History,
+  match: Match<{ info: string }>,
 };
 
 export const TableOfResults: React.FC<TableOfResultsProps> = ({

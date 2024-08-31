@@ -1,16 +1,16 @@
-import React, { useEffect } from 'react';
-import { useForm, Controller } from 'react-hook-form';
-import styles from './UserForm.module.css';
-import type { History, Location } from 'history';
-import Button from '@mui/material/Button';
-import TextField from '@mui/material/TextField';
-import SearchIcon from '@mui/icons-material/Search';
-import Stack from '@mui/material/Stack';
-import Alert from '@mui/material/Alert';
+import React, { useEffect } from "react";
+import { useForm, Controller } from "react-hook-form";
+import styles from "./UserForm.module.css";
+import type { History, Location } from "history";
+import Button from "@mui/material/Button";
+import TextField from "@mui/material/TextField";
+import SearchIcon from "@mui/icons-material/Search";
+import Stack from "@mui/material/Stack";
+import Alert from "@mui/material/Alert";
 
 type UserFormProps = {
-  location: Location;
-  history: History;
+  location: Location,
+  history: History,
 };
 
 export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
@@ -25,11 +25,11 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
     defaultValues: {
       userInput: currentRep,
     },
-    mode: 'onBlur',
+    mode: "onBlur",
   });
 
   useEffect(() => {
-    setValue('userInput', currentRep);
+    setValue("userInput", currentRep);
   }, [currentRep]);
 
   const onSubmit = (values: { userInput: string }) => {
@@ -50,7 +50,7 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
             <Controller
               name="userInput"
               rules={{
-                required: 'Обязательное поле',
+                required: "Обязательное поле",
                 pattern: {
                   value: /^[/a-zA-z0-9]+$/,
                   message:
@@ -80,7 +80,7 @@ export const UserForm: React.FC<UserFormProps> = ({ history, location }) => {
             variant="contained"
             type="submit"
             size="small"
-            color={errors.userInput ? 'error' : 'success'}
+            color={errors.userInput ? "error" : "success"}
           >
             Искать
           </Button>
