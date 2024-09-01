@@ -23,4 +23,6 @@
 
 .wrap {
     padding-top: 200px;
+    display: flex;
+    padding-bottom: 200px;
 }
