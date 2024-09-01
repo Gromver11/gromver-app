@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/gromver-app/static/css/main.b4e3265b.css",
+    "main.js": "/gromver-app/static/js/main.91653aeb.js",
+    "index.html": "/gromver-app/index.html",
+    "main.b4e3265b.css.map": "/gromver-app/static/css/main.b4e3265b.css.map",
+    "main.91653aeb.js.map": "/gromver-app/static/js/main.91653aeb.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.b4e3265b.css",
+    "static/js/main.91653aeb.js"
+  ]
+}
